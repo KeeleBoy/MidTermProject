@@ -21,7 +21,14 @@ public class Book extends Media {
 
 	@Override
 	public String toString() {
-		return "Book [author=" + author + "]";
+		if (status) {
+			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
+					+ ", dueDate=" + dueDate + "]";
+			
+		} else {		
+		
+		return "Book [Author= " + author + ", title= " + title + ", status= Available";
+		}
 	}
 
 	public String getAuthor() {

@@ -108,8 +108,8 @@ public class Methods {
 				itemToReturn = checkedOut.get(userChoice - 1);
 			} else {
 				System.out.println("Cannot find item to return, please try again.");
-				break;
 			}
+			// FIXME sam fix so it returns only if found
 			itemToReturn.setStatus(false);
 			System.out.println("You have returned: " + itemToReturn);
 		}		
