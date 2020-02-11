@@ -1,5 +1,7 @@
 package co.grandcircus;
 
+import java.util.Scanner;
+
 public class Main {
 
 	/*
@@ -10,18 +12,30 @@ public class Main {
 
 	public static void main(String[] args) {
 		Methods mm = new Methods();
-		System.out.println("Welcome to the Library");
-		mm.printMenu();
+		Scanner scnr = new Scanner(System.in);
+		boolean userContinue = true;
+		int userChoice;
+		
+		do{
+			mm.printMenu();
+			System.out.println("\nEnter a selection:");
+			// FIXME get Library array
+			userChoice = Validator.getInt(scnr, 1, 3);
+			switch(userChoice) {
+			case 1:
+				// Display
+				break;
+			case 2:
+				// Search
+				break;
+			case 3:
+				// Return
+			break;
+			default:
+				userContinue = false;
+			}
+		} while (userContinue);
+		
 
 	}
-	
-	public void printMenu() {
-		System.out.println("===================   MENU   ===================");
-		System.out.println("   [1]   Display");
-		System.out.println("   [2]   Search");
-		System.out.println("   [3]   Return");		
-	}
-	// Search
-	// 
-
 }
