@@ -1,8 +1,9 @@
+package co.grandcircus;
 
 public class Main {
 
 	/*
-	 * @Authors Sam, James and Kyle
+	 * @Authors Sam Keim, James McDowell and Kyle Warchuck
 	 * 
 	 * 
 	 */
