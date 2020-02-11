@@ -29,15 +29,15 @@ public class Main {
 			switch (userChoice) {
 			case 1:
 				// Display
-				Methods.displayTree(scnr, bookLibrary, DVDLibrary);
+				Methods.displayTree(scnr, mediaList);
 				break;
 			case 2:
 				// Search
-				Methods.searchTree(scnr, bookLibrary, DVDLibrary);
+				Methods.searchTree(scnr, mediaList);
 				break;
 			case 3:
 				// Return
-				Methods.returnItem(scnr, bookLibrary, DVDLibrary);
+				Methods.returnItem(scnr, mediaList);
 				break;
 			default:
 				userContinue = false;
