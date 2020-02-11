@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DVDLineConverter implements LineConverter<DVD> {
 
@@ -14,15 +15,27 @@ public class DVDLineConverter implements LineConverter<DVD> {
 	public DVD fromLine(String line) {
 
 		line.split("\t");
+		
+		boolean status;
+		String dueDate = "";
 
 		String[] lines = line.split("\t");
 		String title = lines[0];
-		boolean status = lines[1];
-		LocalDate dueDate = lines[2];
+		if (lines[1].equals("true")) {
+			status = true;
+		} else {
+			status = false;
+		}
+		
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
+		dueDate = lines[2];
+		LocalDate setDueDate = LocalDate.parse(dueDate, format);
+		
+		
 		int runtime = Integer.parseInt(lines[3]);
 		String director = lines[4];
 
-		return new DVD(title, status, dueDate, runtime, director);
+		return new DVD(title, status, setDueDate, runtime, director);
 	}
 
 }

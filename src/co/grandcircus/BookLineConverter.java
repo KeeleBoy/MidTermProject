@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BookLineConverter implements LineConverter<Book> {
 
@@ -14,14 +15,24 @@ public class BookLineConverter implements LineConverter<Book> {
 	public Book fromLine(String line) {
 
 		line.split("\t");
+		
+		boolean status;
+		String dueDate = "";
 
 		String[] lines = line.split("\t");
 		String title = lines[0];
-		boolean status = lines[1];
-		LocalDate dueDate = lines[2];
-		String author = lines[4];
+		if (lines[1].equals("true")) {
+			status = true;
+		} else {
+			status = false;
+		}
+		
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
+		dueDate = lines[2];
+		LocalDate setDueDate = LocalDate.parse(dueDate, format);
+		String author = lines[3];
 
-		return new Book(title, status, dueDate, author);
+		return new Book(title, status, setDueDate, author);
 	}
 
 }
