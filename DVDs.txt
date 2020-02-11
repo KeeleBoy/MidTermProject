@@ -1,7 +1,7 @@
 The Godfather	false	2020-03-01	178	Francis Ford Coppola
 The Wizard of Oz	false	2020-03-01	112	Victor Flemming
 Citizen Kane	false	2020-03-01	119	Orson Welles
-The Shawshank Redemption	false	2020-03-01	142	Frank Darabont
+The Shawshank Redemption	true	2020-03-01	142	Frank Darabont
 Pulp Fiction	false	2020-03-01	178	Quentin Tarantino
 Casablanca	false	2020-03-01	102	Michael Cuutiz
 The Godfather: Pt II	false	2020-03-01	202	Francis Ford Coppola

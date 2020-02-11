@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Methods {
 	public static ArrayList<Media> tempList = new ArrayList<>();
-	
+
 	public void printMenu() {
 		System.out.println("==================[   LIBRARY MENU   ]==============================");
 		System.out.println("\n   [1]   Display");
@@ -17,32 +17,57 @@ public class Methods {
 		System.out.println("====================================================================");
 	}
 
-	public static void byAuthorDirector(String name, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	public static void byAuthorDirector(String name, List<Media> library, Scanner scnr) {
 		name = name.toUpperCase();
-		for (DVD m : DVDLibrary) {
-			if (m.getDirector().toUpperCase().contains(name)) {
-				System.out.println(m);
+		int counter = 1;
+		for (Media item : library) {
+			if (item instanceof DVD) {
+				DVD dvd = (DVD) item;
+				if (dvd.getDirector().toUpperCase().contains(name)) {
+					System.out.println(counter++ + ". " + dvd);
+					tempList.add(dvd);
+				}
+			} else {
+				Book book = (Book) item;
+				if (book.getAuthor().toUpperCase().contains(name)) {
+					System.out.println(counter++ + ". " + book);
+					tempList.add(book);
+				}
 			}
 		}
-		for (Book m : bookLibrary) {
-			if (m.getAuthor().toUpperCase().contains(name)) {
-				System.out.println(m);
+		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+		if (scnr.hasNextInt()) {
+			int index = scnr.nextInt() - 1;
+			tempList.get(index);
+			System.out.println("Is this correct? (Y/N)");
+			boolean userChoice = Validator.yesOrNo(scnr);
+			if (userChoice) {
+				Methods.checkout(tempList.get(index), scnr);
 			}
 		}
+		scnr.nextLine(); // Clear scanner if q
 	}
 
-	public static void byTitle(String title, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	public static void byTitle(String title, List<Media> library, Scanner scnr) {
 		title = title.toUpperCase();
-		for (Media m : bookLibrary) {
+		int counter = 1;
+		for (Media m : library) {
 			if (m.getTitle().toUpperCase().contains(title)) {
-				System.out.println(m);
+				System.out.println(counter++ + ". " + m);
+				tempList.add(m);
 			}
 		}
-		for (Media m : DVDLibrary) {
-			if (m.getTitle().toUpperCase().contains(title)) {
-				System.out.println(m);
+		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+		if (scnr.hasNextInt()) {
+			int index = scnr.nextInt() - 1;
+			tempList.get(index);
+			System.out.println("Is this correct? (Y/N)");
+			boolean userChoice = Validator.yesOrNo(scnr);
+			if (userChoice) {
+				Methods.checkout(tempList.get(index), scnr);
 			}
 		}
+		scnr.nextLine(); // Clear scanner
 	}
 
 	public static void checkout(Media media, Scanner scnr) {
@@ -57,24 +82,18 @@ public class Methods {
 		System.out.printf("Please return %s by %s", media.getTitle(), media.getDueDate());
 	}
 
-	public static void returnItem(Scanner scnr, List<Book> bookLibrary, List<DVD> DVDLibrary) {
-		Media itemToReturn = bookLibrary.get(0);
+	public static void returnItem(Scanner scnr, List<Media> library) {
+		Media itemToReturn = library.get(0);
 		boolean found = false;
 		boolean cannotFind = false;
 		System.out.println("Enter title:");
 		String title = scnr.nextLine();
 		title = title.toUpperCase();
-		
+
 		do {
-			for (Book b : bookLibrary) {
-				if (b.getTitle().toUpperCase().contains(title)) {
-					itemToReturn = b;
-					found = true;
-				}
-			}
-			for (DVD d : DVDLibrary) {
-				if (d.getTitle().toUpperCase().contains(title)) {
-					itemToReturn = d;
+			for (Media item : library) {
+				if (item.getTitle().toUpperCase().contains(title)) {
+					itemToReturn = item;
 					found = true;
 				}
 			}
@@ -87,16 +106,10 @@ public class Methods {
 		}
 		if (cannotFind && !found) {
 			int counter = 1;
-			for (Book b : bookLibrary) {
-				if (b.isStatus()) {
-					System.out.println(counter++ + ". " + b);
-					tempList.add(b);
-				}
-			}
-			for (DVD d : DVDLibrary) {
-				if (d.isStatus()) {
-					System.out.println(counter++ + ". " + d);
-					tempList.add(d);
+			for (Media item : library) {
+				if (item.isStatus()) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
 				}
 			}
 			System.out.println("Enter number:");
@@ -109,73 +122,79 @@ public class Methods {
 			} else {
 				System.out.println("Cannot find item to return, please try again.");
 			}
-		}		
+		}
 		itemToReturn.setStatus(false);
-		System.out.println("You have returned: " + itemToReturn);
-
+		System.out.println("You have returned: " + itemToReturn.getTitle());
 	}
-	public static void displayTree(Scanner scnr, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	
+	public static void displayTree(Scanner scnr, List<Media> library) {
+
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
 		int userChoice = Validator.getInt(scnr, 1, 3);
 		int counter = 1;
-		switch(userChoice) {
+		switch (userChoice) {
 //		case 1:
-			//display by creator
-			// FIXME Sam sort by author class, mix
+		// display by creator
+		// FIXME Sam sort by author class, mix
 //			break;
 //		case 2:
-			// display by title
-			// FIXME Sam Sort by title class, mix together with arrayList master
+		// display by title
+		// FIXME Sam Sort by title class, mix together with arrayList master
 //			break;
 		case 1:
 			//display books
-			for (Book b : bookLibrary) {
-				System.out.println(counter++ + ". " + b);
-				tempList.add(b);
+			for (Media item : library) {
+				if (item instanceof Book) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
+				}
 			}
 			break;
 		case 2:
 			//display DVD
-			for (DVD dvd : DVDLibrary) {
-				System.out.println(counter++ + ". " + dvd);
-				tempList.add(dvd);
+			for (Media item : library) {
+				if (item instanceof DVD) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
+				}
 			}
 			break;
 		default:
 			//display all
-			for (Book b : bookLibrary) {
-				System.out.println(counter++ + ". " + b);
-				tempList.add(b);
-			}
-			for (DVD dvd : DVDLibrary) {
-				System.out.println(counter++ + ". " + dvd);
-				tempList.add(dvd);
+			for (Media item : library) {
+				System.out.println(counter++ + ". " + item);
+				tempList.add(item);
 			}
 			break;
 		}
 		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 		if (scnr.hasNextInt()) {
-			int index = scnr.nextInt();
+			int index = scnr.nextInt() - 1;
 			tempList.get(index);
 			System.out.println("Is this correct? (Y/N)");
+			boolean userCheckout = Validator.yesOrNo(scnr);
+			if (userCheckout) {
+				Methods.checkout(tempList.get(index), scnr);
+			}
 		}
+		scnr.nextLine(); // Clear scanner
 	}
-	
-	public static void searchTree(Scanner scnr, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	public static void searchTree(Scanner scnr, List<Media> library) {
+
 		System.out.println("Search by [1] Author/Director, [2] Title");
 		int userChoice = Validator.getInt(scnr, 1, 2);
-		switch(userChoice) {
+		switch (userChoice) {
 		case 1:
 			// author director
 			System.out.println("Enter author/director name:");
 			String name = scnr.nextLine();
-			Methods.byAuthorDirector(name, bookLibrary, DVDLibrary);
+			Methods.byAuthorDirector(name, library, scnr);
 			break;
 		default:
 			// title
 			System.out.println("Enter title:");
 			String title = scnr.nextLine();
-			Methods.byTitle(title, bookLibrary, DVDLibrary);
+			Methods.byTitle(title, library, scnr);
 		}
 	}
 }
