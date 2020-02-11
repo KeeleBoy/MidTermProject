@@ -7,7 +7,7 @@ public class DVDLineConverter implements LineConverter<DVD> {
 
 	@Override
 	public String toLine(DVD object) {
-		return String.format("%s\t%s\t%s", object.getTitle(), object.isStatus(), object.getDueDate(),
+		return String.format("%s\t%s\t%s\t%s\t%s", object.getTitle(), object.isStatus(), object.getDueDate(),
 				object.getRuntime(), object.getDirector());
 	}
 

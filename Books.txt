@@ -1,1 +1,10 @@
-To kill a Mockingbird	false	2099-01-01	Harper Lee
+To kill a Mockingbird	false	2020-03-01	Harper Lee
+Ulysses	false	2020-03-01	James Joyce
+The Great Gatsby	false	2020-03-01	F. Scott Fitzgerald
+A Portrait of the Artist as a Young Man	false	2020-03-01	James Joyce
+Lolita	false	2020-03-01	Vladimir Nabokov
+Brave New World	false	2020-03-01	Aldous Huxley
+The Sound and the Fury	false	2020-03-01	William Faulkner
+Catch-22	false	2020-03-01	Joseph Heller
+Darkness At Noon	false	2020-03-01	Arthur Koestler
+Sons and Lovers	false	2020-03-01	D.H. Lawrence

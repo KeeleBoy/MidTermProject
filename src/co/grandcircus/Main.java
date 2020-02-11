@@ -1,5 +1,6 @@
 package co.grandcircus;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,8 @@ public class Main {
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 			// FIXME James get DVD array
-			List<DVD> DVDLibrary = new List<>();
+			ArrayList<DVD> DVDLibrary = new ArrayList<>();
+			DVDLibrary = DVDs.getDVDList();
 			
 			// FIXME Kyle get book array
 			List<Book> bookLibrary = new List<>();

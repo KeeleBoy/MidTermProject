@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DVD extends Media {
 
@@ -38,8 +39,15 @@ public class DVD extends Media {
 
 	@Override
 	public String toString() {
-		return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= " + status
-				+ ", dueDate=" + dueDate + "]";
+		
+		if (status) {
+			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Checked out"
+					+ ", dueDate=" + dueDate + "]";
+			
+		} else {		
+		
+		return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Available";
+		}
 	}
 	
 	
