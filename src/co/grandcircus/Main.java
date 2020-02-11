@@ -1,5 +1,6 @@
 package co.grandcircus;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -19,11 +20,16 @@ public class Main {
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 			// FIXME James get DVD array
+			List<DVD> DVDLibrary = new List<>();
+			
 			// FIXME Kyle get book array
+			List<Book> bookLibrary = new List<>();
+			
 			userChoice = Validator.getInt(scnr, 1, 4);
 			switch(userChoice) {
 			case 1:
 				// Display
+				Methods.displayTree(scnr, bookLibrary, DVDLibrary);
 				break;
 			case 2:
 				// Search
