@@ -38,7 +38,7 @@ public class DVD extends Media {
 
 	@Override
 	public String toString() {
-		return "DVD [runtime=" + runtime + ", director=" + director + ", title=" + title + ", status=" + status
+		return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= " + status
 				+ ", dueDate=" + dueDate + "]";
 	}
 	
