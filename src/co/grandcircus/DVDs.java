@@ -3,6 +3,7 @@ package co.grandcircus;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DVDs {
 
@@ -34,6 +35,12 @@ public class DVDs {
 	public static void DVDsToFile(ArrayList<DVD> dvds) {
 			fileHelper.rewrite(dvds);
 		
+	}
+	
+	public static ArrayList<Media> mediaFromFiles() {
+		ArrayList<Media> media = (ArrayList) fileHelper.readAll();
+			media.addAll(Books.fileHelper.readAll());
+			return media;
 	}
 
 }

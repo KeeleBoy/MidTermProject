@@ -27,7 +27,7 @@ public class DVDLineConverter implements LineConverter<DVD> {
 			status = false;
 		}
 		
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-dd-MM");
 		dueDate = lines[2];
 		LocalDate setDueDate = LocalDate.parse(dueDate, format);
 		

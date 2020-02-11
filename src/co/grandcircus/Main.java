@@ -22,11 +22,8 @@ public class Main {
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 			
-			ArrayList<DVD> DVDLibrary = new ArrayList<>();
-			DVDLibrary = DVDs.getDVDList();
-			
-			ArrayList<Book> bookLibrary = new ArrayList<>();
-			bookLibrary = Books.getBookList();
+			ArrayList<Media> mediaList = new ArrayList<>();
+			mediaList = DVDs.mediaFromFiles();
 					
 			userChoice = Validator.getInt(scnr, 1, 4);
 			switch (userChoice) {
@@ -47,6 +44,6 @@ public class Main {
 				System.out.println("Thank you for visiting. Goodybe.");
 			}
 		} while (userContinue);
-
+		
 	}
 }
