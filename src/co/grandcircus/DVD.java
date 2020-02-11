@@ -35,10 +35,13 @@ public class DVD extends Media {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "DVD [runtime=" + runtime + ", director=" + director + "]";
+		return "DVD [runtime=" + runtime + ", director=" + director + ", title=" + title + ", status=" + status
+				+ ", dueDate=" + dueDate + "]";
 	}
+	
+	
 
 }
