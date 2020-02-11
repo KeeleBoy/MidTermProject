@@ -7,7 +7,7 @@ public class BookLineConverter implements LineConverter<Book> {
 
 	@Override
 	public String toLine(Book object) {
-		return String.format("%s\t%s\t%s", object.getTitle(), object.isStatus(), object.getDueDate(),
+		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.isStatus(), object.getDueDate(),
 				object.getAuthor());
 	}
 
@@ -15,7 +15,7 @@ public class BookLineConverter implements LineConverter<Book> {
 	public Book fromLine(String line) {
 
 		line.split("\t");
-		
+
 		boolean status;
 		String dueDate = "";
 
@@ -26,7 +26,7 @@ public class BookLineConverter implements LineConverter<Book> {
 		} else {
 			status = false;
 		}
-		
+
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
 		dueDate = lines[2];
 		LocalDate setDueDate = LocalDate.parse(dueDate, format);
