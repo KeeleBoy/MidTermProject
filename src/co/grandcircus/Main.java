@@ -11,12 +11,13 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
+
 		Methods mm = new Methods();
 		Scanner scnr = new Scanner(System.in);
 		boolean userContinue = true;
 		int userChoice;
-		
-		do{
+
+		do {
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 			// FIXME James get DVD array
@@ -26,7 +27,7 @@ public class Main {
 			List<Book> bookLibrary = new List<>();
 			
 			userChoice = Validator.getInt(scnr, 1, 4);
-			switch(userChoice) {
+			switch (userChoice) {
 			case 1:
 				// Display
 				Methods.displayTree(scnr, bookLibrary, DVDLibrary);
@@ -36,13 +37,12 @@ public class Main {
 				break;
 			case 3:
 				// Return
-			break;
+				break;
 			default:
 				userContinue = false;
 				System.out.println("Thank you for visiting. Goodybe.");
 			}
 		} while (userContinue);
+
 	}
 }
-
-
