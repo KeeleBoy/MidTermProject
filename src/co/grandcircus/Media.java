@@ -32,9 +32,4 @@ public abstract class Media {
 		this.dueDate = dueDate;
 	}
 
-	/*
-	 * @Override public String toString() { return "Media [title=" + title +
-	 * ", status=" + status + ", dueDate=" + dueDate + "]"; }
-	 */
-
 }
