@@ -13,7 +13,7 @@ public class DVD extends Media {
 	}
 
 	public DVD(String title, boolean status, LocalDate dueDate, int runtime, String director) {
-		
+
 		this.title = title;
 		this.status = status;
 		this.dueDate = dueDate;
@@ -39,17 +39,15 @@ public class DVD extends Media {
 
 	@Override
 	public String toString() {
-		
+
 		if (status) {
-			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Checked out"
-					+ ", dueDate=" + dueDate + "]";
-			
-		} else {		
-		
-		return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Available";
+			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime
+					+ ", status= Checked out" + ", dueDate=" + dueDate + "]";
+
+		} else {
+
+			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Available";
 		}
 	}
-	
-	
 
 }

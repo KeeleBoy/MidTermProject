@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Methods {
 	public static ArrayList<Media> tempList = new ArrayList<>();
-	
+
 	public void printMenu() {
 		System.out.println("==================[   LIBRARY MENU   ]==============================");
 		System.out.println("\n   [1]   Display");
@@ -89,7 +89,7 @@ public class Methods {
 		System.out.println("Enter title:");
 		String title = scnr.nextLine();
 		title = title.toUpperCase();
-		
+
 		do {
 			for (Media item : library) {
 				if (item.getTitle().toUpperCase().contains(title)) {
@@ -122,23 +122,24 @@ public class Methods {
 			} else {
 				System.out.println("Cannot find item to return, please try again.");
 			}
-		}		
+		}
 		itemToReturn.setStatus(false);
 		System.out.println("You have returned: " + itemToReturn.getTitle());
 	}
 	
 	public static void displayTree(Scanner scnr, List<Media> library) {
+
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
 		int userChoice = Validator.getInt(scnr, 1, 3);
 		int counter = 1;
-		switch(userChoice) {
+		switch (userChoice) {
 //		case 1:
-			//display by creator
-			// FIXME Sam sort by author class, mix
+		// display by creator
+		// FIXME Sam sort by author class, mix
 //			break;
 //		case 2:
-			// display by title
-			// FIXME Sam Sort by title class, mix together with arrayList master
+		// display by title
+		// FIXME Sam Sort by title class, mix together with arrayList master
 //			break;
 		case 1:
 			//display books
@@ -178,11 +179,11 @@ public class Methods {
 		}
 		scnr.nextLine(); // Clear scanner
 	}
-	
 	public static void searchTree(Scanner scnr, List<Media> library) {
+
 		System.out.println("Search by [1] Author/Director, [2] Title");
 		int userChoice = Validator.getInt(scnr, 1, 2);
-		switch(userChoice) {
+		switch (userChoice) {
 		case 1:
 			// author director
 			System.out.println("Enter author/director name:");
