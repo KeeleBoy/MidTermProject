@@ -17,32 +17,60 @@ public class Methods {
 		System.out.println("====================================================================");
 	}
 
-	public static void byAuthorDirector(String name, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	public static void byAuthorDirector(String name, List<Book> bookLibrary, List<DVD> DVDLibrary, Scanner scnr) {
 		name = name.toUpperCase();
+		int counter = 1;
 		for (DVD m : DVDLibrary) {
 			if (m.getDirector().toUpperCase().contains(name)) {
-				System.out.println(m);
+				System.out.println(counter++ + ". " + m);
+				tempList.add(m);
 			}
 		}
 		for (Book m : bookLibrary) {
 			if (m.getAuthor().toUpperCase().contains(name)) {
-				System.out.println(m);
+				System.out.println(counter++ + ". " + m);
+				tempList.add(m);
 			}
 		}
+		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+		if (scnr.hasNextInt()) {
+			int index = scnr.nextInt() - 1;
+			tempList.get(index);
+			System.out.println("Is this correct? (Y/N)");
+			boolean userChoice = Validator.yesOrNo(scnr);
+			if (userChoice) {
+				Methods.checkout(tempList.get(index), scnr);
+			}
+		}
+		scnr.nextLine(); // Clear scanner
 	}
 
-	public static void byTitle(String title, List<Book> bookLibrary, List<DVD> DVDLibrary) {
+	public static void byTitle(String title, List<Book> bookLibrary, List<DVD> DVDLibrary, Scanner scnr) {
 		title = title.toUpperCase();
+		int counter = 1;
 		for (Media m : bookLibrary) {
 			if (m.getTitle().toUpperCase().contains(title)) {
-				System.out.println(m);
+				System.out.println(counter++ + ". " + m);
+				tempList.add(m);
 			}
 		}
 		for (Media m : DVDLibrary) {
 			if (m.getTitle().toUpperCase().contains(title)) {
-				System.out.println(m);
+				System.out.println(counter++ + ". " + m);
+				tempList.add(m);
 			}
 		}
+		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+		if (scnr.hasNextInt()) {
+			int index = scnr.nextInt() - 1;
+			tempList.get(index);
+			System.out.println("Is this correct? (Y/N)");
+			boolean userChoice = Validator.yesOrNo(scnr);
+			if (userChoice) {
+				Methods.checkout(tempList.get(index), scnr);
+			}
+		}
+		scnr.nextLine(); // Clear scanner
 	}
 
 	public static void checkout(Media media, Scanner scnr) {
@@ -111,8 +139,7 @@ public class Methods {
 			}
 		}		
 		itemToReturn.setStatus(false);
-		System.out.println("You have returned: " + itemToReturn);
-
+		System.out.println("You have returned: " + itemToReturn.getTitle());
 	}
 	public static void displayTree(Scanner scnr, List<Book> bookLibrary, List<DVD> DVDLibrary) {
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
@@ -155,10 +182,15 @@ public class Methods {
 		}
 		System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 		if (scnr.hasNextInt()) {
-			int index = scnr.nextInt();
+			int index = scnr.nextInt() - 1;
 			tempList.get(index);
 			System.out.println("Is this correct? (Y/N)");
+			boolean userCheckout = Validator.yesOrNo(scnr);
+			if (userCheckout) {
+				Methods.checkout(tempList.get(index), scnr);
+			}
 		}
+		scnr.nextLine(); // Clear scanner
 	}
 	
 	public static void searchTree(Scanner scnr, List<Book> bookLibrary, List<DVD> DVDLibrary) {
@@ -169,13 +201,13 @@ public class Methods {
 			// author director
 			System.out.println("Enter author/director name:");
 			String name = scnr.nextLine();
-			Methods.byAuthorDirector(name, bookLibrary, DVDLibrary);
+			Methods.byAuthorDirector(name, bookLibrary, DVDLibrary, scnr);
 			break;
 		default:
 			// title
 			System.out.println("Enter title:");
 			String title = scnr.nextLine();
-			Methods.byTitle(title, bookLibrary, DVDLibrary);
+			Methods.byTitle(title, bookLibrary, DVDLibrary, scnr);
 		}
 	}
 }
