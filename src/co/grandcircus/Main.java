@@ -21,10 +21,10 @@ public class Main {
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 			// FIXME James get DVD array
-			List<DVD> DVDLibrary = new List<>();
+//			List<DVD> DVDLibrary = new List<>();
 			
 			// FIXME Kyle get book array
-			List<Book> bookLibrary = new List<>();
+//			List<Book> bookLibrary = new List<>();
 			
 			userChoice = Validator.getInt(scnr, 1, 4);
 			switch (userChoice) {
@@ -34,9 +34,11 @@ public class Main {
 				break;
 			case 2:
 				// Search
+				Methods.searchTree(scnr, bookLibrary, DVDLibrary);
 				break;
 			case 3:
 				// Return
+				Methods.returnItem(scnr, bookLibrary, DVDLibrary);
 				break;
 			default:
 				userContinue = false;
