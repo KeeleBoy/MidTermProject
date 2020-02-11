@@ -22,8 +22,9 @@ public class Main {
 		do{
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
-			// FIXME get Library array
-			userChoice = Validator.getInt(scnr, 1, 3);
+			// FIXME James get DVD array
+			// FIXME Kyle get book array
+			userChoice = Validator.getInt(scnr, 1, 4);
 			switch(userChoice) {
 			case 1:
 				// Display
@@ -36,6 +37,7 @@ public class Main {
 			break;
 			default:
 				userContinue = false;
+				System.out.println("Thank you for visiting. Goodybe.");
 			}
 		} while (userContinue);
 >>>>>>> 70cbe9f235786bf9a6dca6861cb20853f24c9f90

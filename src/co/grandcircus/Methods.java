@@ -8,10 +8,10 @@ public class Methods {
 	
 	public void printMenu() {
 		System.out.println("==================[   LIBRARY MENU   ]==============================");
-		System.out.println("   [1]   Display");
+		System.out.println("\n   [1]   Display");
 		System.out.println("   [2]   Search");
-		System.out.println("   [3]   Return");		
-		System.out.println("   [4]   Exit");
+		System.out.println("   [3]   Return Item");		
+		System.out.println("   [4]   Exit\n");
 		System.out.println("====================================================================");
 
 	}
