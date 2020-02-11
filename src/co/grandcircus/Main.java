@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	/*
-	 * @Authors Sam Keim, James McDowell and Kyle Warchuck
-	 *  test
+	 * @Authors Sam Keim, James McDowell and Kyle Warchuck test
 	 * 
 	 */
 
@@ -35,7 +34,7 @@ public class Main {
 				userContinue = false;
 			}
 		} while (userContinue);
-		
-
 	}
 }
+
+
