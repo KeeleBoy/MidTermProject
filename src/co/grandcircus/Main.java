@@ -26,8 +26,9 @@ public class Main {
 			DVDLibrary = DVDs.getDVDList();
 			
 			// FIXME Kyle get book array
-			List<Book> bookLibrary = new List<>();
-			
+			ArrayList<Book> bookLibrary = new ArrayList<>();
+			bookLibrary = Books.getBookList();
+					
 			userChoice = Validator.getInt(scnr, 1, 4);
 			switch (userChoice) {
 			case 1:
