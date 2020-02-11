@@ -15,7 +15,7 @@ public class DVDLineConverter implements LineConverter<DVD> {
 	public DVD fromLine(String line) {
 
 		line.split("\t");
-		
+
 		boolean status;
 		String dueDate = "";
 
@@ -26,12 +26,11 @@ public class DVDLineConverter implements LineConverter<DVD> {
 		} else {
 			status = false;
 		}
-		
+
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
 		dueDate = lines[2];
 		LocalDate setDueDate = LocalDate.parse(dueDate, format);
-		
-		
+
 		int runtime = Integer.parseInt(lines[3]);
 		String director = lines[4];
 

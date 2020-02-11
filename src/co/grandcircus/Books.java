@@ -22,7 +22,7 @@ public class Books {
 		books.add(new Book("Lolita", false, setDueDate, "Vladimir Nabokov"));
 		books.add(new Book("Brave New World", false, setDueDate, "Aldous Huxley"));
 		books.add(new Book("The Sound and the Fury", false, setDueDate, "William Faulkner"));
-		books.add(new Book("Catch-22", false, setDueDate,  "Joseph Heller"));
+		books.add(new Book("Catch-22", false, setDueDate, "Joseph Heller"));
 		books.add(new Book("Darkness At Noon", false, setDueDate, "Arthur Koestler"));
 		books.add(new Book("Sons and Lovers", false, setDueDate, "D.H. Lawrence"));
 
@@ -30,11 +30,9 @@ public class Books {
 
 	}
 
-	
-
 	public static void BooksToFile(ArrayList<Book> bookList) {
 		fileHelper.rewrite(bookList);
-		
+
 	}
 
 }
