@@ -138,4 +138,18 @@ public class Validator {
 		} while (!exit);
 		return null;
 	}
+	
+	// Validate yes or no
+	public static boolean yesOrNo(Scanner scnr) {
+		do {
+			String userInput = scnr.nextLine();
+			if (userInput.toUpperCase().startsWith("Y")) {
+				return true;
+			} else if (userInput.toUpperCase().startsWith("N")) {
+				return false;
+			} else {
+				System.out.println("Please enter Y or N.");
+			}
+		} while (true);
+	}
 }
