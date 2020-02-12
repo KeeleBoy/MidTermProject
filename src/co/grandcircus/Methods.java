@@ -140,15 +140,16 @@ public class Methods {
 			}
 			cannotFind = true;
 		} while (!found || !cannotFind);
-		
+
 		// if the searcher found an item, prints item and asks if correct
 		if (found) {
 			System.out.println(itemToReturn);
 			System.out.println("Is this the correct item? (Y/N)");
 			found = Validator.yesOrNo(scnr);
 		}
-		
-		// if the searcher could not find a match and the user has rejected a proposed match
+
+		// if the searcher could not find a match and the user has rejected a proposed
+		// match
 		if (cannotFind && !found) {
 			// prints checked-out items
 			int counter = 1;
@@ -179,11 +180,14 @@ public class Methods {
 	}
 
 	public static void displayTree(Scanner scnr, List<Media> library) {
+
+	public static void displayTree(Scanner scnr, List<Media> library) {
 		// submenu selection
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
 		int userChoice = Validator.getInt(scnr, 1, 3);
 		int counter = 1;
-		// switch case for selections, should break this up into multiple methods FIXME Sam
+		// switch case for selections, should break this up into multiple methods FIXME
+		// Sam
 		switch (userChoice) {
 //		case 1:
 		// display by creator
@@ -237,6 +241,8 @@ public class Methods {
 		}
 		tempList.clear(); // clears for next method
 	}
+
+	public static void searchTree(Scanner scnr, List<Media> library) {
 
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
