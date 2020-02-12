@@ -18,12 +18,12 @@ public abstract class Media {
 		this.title = title;
 	}
 
-	public boolean isStatus() {
+	public boolean isCheckedOut() {
 		return checkedOut;
 	}
 
-	public void setStatus(boolean status) {
-		this.checkedOut = status;
+	public void setCheckedOut(boolean checkedOut) {
+		this.checkedOut = checkedOut;
 	}
 
 	public LocalDate getDueDate() {
@@ -33,5 +33,7 @@ public abstract class Media {
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
+
+	
 
 }
