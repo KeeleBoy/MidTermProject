@@ -91,7 +91,6 @@ public class Methods {
 		int counter = 1; // Counter for items to be displayed
 		for (Media m : library) {
 			// Loops through looking for match
-
 			// Heres an attempt to only print books that are not checked out
 
 			if (m.isCheckedOut() == false) {

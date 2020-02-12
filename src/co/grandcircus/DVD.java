@@ -49,8 +49,6 @@ public class DVD extends Media {
 
 		if (checkedOut) {
 			return String.format("%-60s%20s", "\"" + title + "\" by " + getDirector() + " " + runtime + "m", "Unavailable until " + getDueDate());
-//			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime
-//					+ ", status= Checked out" + ", dueDate=" + dueDate + "]";
 
 		} else {
 
