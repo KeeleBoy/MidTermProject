@@ -25,7 +25,8 @@ public class Books {
 		books.add(new Book("Catch-22", false, setDueDate, "Joseph Heller"));
 		books.add(new Book("Darkness At Noon", false, setDueDate, "Arthur Koestler"));
 		books.add(new Book("Sons and Lovers", false, setDueDate, "D.H. Lawrence"));
-		
+
+		/*
 		books.add(new Book("In Search of Lost Time", false, setDueDate, "Marcel Proust"));
 		books.add(new Book("Don Quixote", false, setDueDate, "Miguel de Cervantes"));
 		books.add(new Book("One Hundred Years of Solitude", false, setDueDate, "Gabriel Garcia Marquez"));
@@ -36,6 +37,7 @@ public class Books {
 		books.add(new Book("The Odyssey", false, setDueDate, "Homer"));
 		books.add(new Book("The Brothers Karamazov", false, setDueDate, "Fyodor Dostoyevsky"));
 		books.add(new Book("Crime and Punishment", false, setDueDate, "Fyodor Dostoyevsky"));
+		*/
 
 		return books;
 
