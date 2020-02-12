@@ -113,7 +113,7 @@ public class Methods {
 			// if user agrees to due date
 			if (confirm) {
 				itemToCheckout.setDueDate(dueDate);
-				itemToCheckout.setStatus(false);
+				itemToCheckout.setStatus(true);
 			}
 			// prints reminder message
 			System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
@@ -226,7 +226,6 @@ public class Methods {
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
-				scnr.nextLine();
 				Methods.checkout(index, scnr);
 			} else {
 				// if not, assumes user wants to quit, clears scanner, and exits
