@@ -23,21 +23,34 @@ public class Book extends Media {
 	@Override
 	public String toString() {
 
-		if (checkedOut) {			
+		if (checkedOut) {
 			String bookString = "\"" + title + "\" by " + getAuthor();
 			int trailing = (60 - bookString.length()) / 2;
 			String dt = ". ";
-			String line = " ";
-			for (int i = 0; i < trailing; i++) {
-				line += dt;
+
+//			String line = dt.repeat(trailing);
+			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
+
+//			if (checkedOut) {
+//
+////			return String.format("%60s%-20s", "", "");
+//				return "Book [Author= " + author + ", title= " + title + ", status= Checked out" + ", dueDate="
+//						+ dueDate + "]";
+//
+//				String line = " ";
+//				for (int i = 0; i < trailing; i++) {
+//					line += dt;
+//				}
+//
+//				return String.format("%-60s%35s", bookString + line, "Unavailable until " + getDueDate());
+//
+//			} else {
+
+				return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
 			}
-			
-			return String.format("%-60s%35s", bookString + line, "Unavailable until " + getDueDate());
-		} else {		
-		
-			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
+
 		}
-	}
+}
 
 	public String getAuthor() {
 		String returnAuthor = "";

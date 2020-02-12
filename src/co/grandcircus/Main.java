@@ -11,7 +11,8 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
-
+		
+		
 		// Declare variables
 		Methods mm = new Methods();
 		Scanner scnr = new Scanner(System.in);

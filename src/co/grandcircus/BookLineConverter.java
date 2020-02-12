@@ -27,7 +27,7 @@ public class BookLineConverter implements LineConverter<Book> {
 			status = false;
 		}
 
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-dd-MM");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
 		dueDate = lines[2];
 		LocalDate setDueDate = LocalDate.parse(dueDate, format);
 		String author = lines[3];
