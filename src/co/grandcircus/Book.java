@@ -10,10 +10,10 @@ public class Book extends Media {
 
 	}
 
-	public Book(String title, boolean status, LocalDate dueDate, String author) {
+	public Book(String title, boolean checkedOut, LocalDate dueDate, String author) {
 		super();
 		this.title = title;
-		this.status = status;
+		this.checkedOut = checkedOut;
 		this.dueDate = dueDate;
 		this.author = author;
 
@@ -21,7 +21,7 @@ public class Book extends Media {
 
 	@Override
 	public String toString() {
-		if (status) {
+		if (checkedOut) {
 			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
 					+ ", dueDate=" + dueDate + "]";
 			

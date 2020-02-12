@@ -12,10 +12,10 @@ public class DVD extends Media {
 		super();
 	}
 
-	public DVD(String title, boolean status, LocalDate dueDate, int runtime, String director) {
+	public DVD(String title, boolean checkedOut, LocalDate dueDate, int runtime, String director) {
 
 		this.title = title;
-		this.status = status;
+		this.checkedOut = checkedOut;
 		this.dueDate = dueDate;
 		this.runtime = runtime;
 		this.director = director;
@@ -40,7 +40,7 @@ public class DVD extends Media {
 	@Override
 	public String toString() {
 
-		if (status) {
+		if (checkedOut) {
 			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime
 					+ ", status= Checked out" + ", dueDate=" + dueDate + "]";
 
