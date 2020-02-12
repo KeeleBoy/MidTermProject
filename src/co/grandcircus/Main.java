@@ -44,7 +44,7 @@ public class Main {
 			default:
 				// Exit
 				userContinue = false;
-				System.out.println("Thank you for visiting. Goodybe.");
+				System.out.println("Thank you for visiting. Goodbye.");
 			}
 		} while (userContinue);
 	}

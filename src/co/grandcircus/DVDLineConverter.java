@@ -14,10 +14,7 @@ public class DVDLineConverter implements LineConverter<DVD> {
 	@Override
 	public DVD fromLine(String line) {
 
-
 		line.split("\t"); // creates a means of splitting lines at tab at tab
-		
-
 		boolean status;
 		String dueDate = "";
 
