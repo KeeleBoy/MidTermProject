@@ -240,7 +240,6 @@ public class Methods {
 		tempList.clear(); // clears for next method
 	}
 
-
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
 		System.out.println("Search by [1] Author/Director, [2] Title");
