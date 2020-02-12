@@ -35,10 +35,15 @@ public class Methods {
 			} else {
 				// if Book, explicit cast to Book type and searches using the getAuthor method
 				Book book = (Book) item;
-				if (book.getAuthor().toUpperCase().contains(name)) {
-					System.out.println(counter++ + ". " + book);
-					// Stores in temporary array of items
-					tempList.add(book);
+
+				// Heres an attempt to only print books that are not checked out
+
+				if (book.checkedOut = false) {
+					if (book.getAuthor().toUpperCase().contains(name)) {
+						System.out.println(counter++ + ". " + book);
+						// Stores in temporary array of items
+						tempList.add(book);
+					}
 				}
 			}
 		}
@@ -68,10 +73,15 @@ public class Methods {
 		int counter = 1; // Counter for items to be displayed
 		for (Media m : library) {
 			// Loops through looking for match
-			if (m.getTitle().toUpperCase().contains(title)) {
-				System.out.println(counter++ + ". " + m);
-				// Adds item to tempList
-				tempList.add(m);
+
+			// Heres an attempt to only print books that are not checked out
+
+			if (m.checkedOut = false) {
+				if (m.getTitle().toUpperCase().contains(title)) {
+					System.out.println(counter++ + ". " + m);
+					// Adds item to tempList
+					tempList.add(m);
+				}
 			}
 		}
 		// if there was at least one match
@@ -133,9 +143,11 @@ public class Methods {
 		// searches first by title
 		do {
 			for (Media item : library) {
-				if (item.getTitle().toUpperCase().contains(title)) {
-					itemToReturn = item;
-					found = true;
+				if (item.checkedOut = false) {
+					if (item.getTitle().toUpperCase().contains(title)) {
+						itemToReturn = item;
+						found = true;
+					}
 				}
 			}
 			cannotFind = true;
@@ -240,10 +252,6 @@ public class Methods {
 		tempList.clear(); // clears for next method
 	}
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 860c724e46104f7d3f007b98261bae26cec4a831
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
 		System.out.println("Search by [1] Author/Director, [2] Title");
