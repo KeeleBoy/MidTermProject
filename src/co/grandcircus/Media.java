@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Media {
 
@@ -18,6 +19,8 @@ public abstract class Media {
 		this.title = title;
 	}
 
+	
+
 	public boolean isCheckedOut() {
 		return checkedOut;
 	}
@@ -26,8 +29,9 @@ public abstract class Media {
 		this.checkedOut = checkedOut;
 	}
 
-	public LocalDate getDueDate() {
-		return dueDate;
+	public String getDueDate() {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
+		return dueDate.format(format);
 	}
 
 	public void setDueDate(LocalDate dueDate) {
