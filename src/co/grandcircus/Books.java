@@ -8,7 +8,7 @@ public class Books {
 
 	static FileHelper<Book> fileHelper = new FileHelper<>("Books.txt", (new BookLineConverter()));
 
-	public static ArrayList<Book> getBookList() {
+	public static ArrayList<Book> getBookList() { // see DVDs for details, same principles for all methods
 
 		ArrayList<Book> books = new ArrayList<>();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
