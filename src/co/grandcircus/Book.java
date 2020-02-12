@@ -1,10 +1,12 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class Book extends Media {
 
-	String author;
+	List<String> author;
 
 	public Book() {
 
@@ -15,8 +17,7 @@ public class Book extends Media {
 		this.title = title;
 		this.checkedOut = checkedOut;
 		this.dueDate = dueDate;
-		this.author = author;
-
+		setAuthor(author);
 	}
 
 	@Override
@@ -28,17 +29,23 @@ public class Book extends Media {
 			
 		} else {		
 		
-		return "Book [Author= " + author + ", title= " + title + ", status= Available";
+		return "Book [Author= " + author + ", title= " + title + ", status= Available]";
 
 			}
 	}
 
 	public String getAuthor() {
-		return author;
+		String returnAuthor = "";
+		for (String a : author) {
+			returnAuthor += a + ", ";
+		}
+		returnAuthor = returnAuthor.substring(0, returnAuthor.length() - 2);
+		return returnAuthor;
 	}
 
 	public void setAuthor(String author) {
-		this.author = author;
+		List<String> authorList = Arrays.asList(author.split(", "));
+		this.author = authorList;
 	}
 
 }

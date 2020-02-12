@@ -10,12 +10,18 @@ public class Methods {
 
 	// Prints menu
 	public void printMenu() {
-		System.out.println("==================[   LIBRARY MENU   ]==============================");
-		System.out.println("\n   [1]   Display");
-		System.out.println("   [2]   Search");
-		System.out.println("   [3]   Return Item");
-		System.out.println("   [4]   Exit\n");
-		System.out.println("====================================================================");
+		System.out.printf("%-30s%-20s%30s\n","","+--------------------+","");
+
+		System.out.printf("%-30s%-20s%30s\n","","|   UNTOLD STORIES   |","");
+		System.out.printf("%-30s%-20s%30s\n","+=============================","|    LIBRARY MENU    |","=============================+");
+		System.out.printf("%-30s%-20s%30s\n","|","+--------------------+","|");
+		System.out.printf("%-30s%-20s%32s\n","|"," ","|");
+		System.out.printf("%-30s%-20s%32s\n","|","[1]   DISPLAY","|");
+		System.out.printf("%-30s%-20s%32s\n","|","[2]   SEARCH","|");
+		System.out.printf("%-30s%-20s%32s\n","|","[3]   RETURN ITEM","|");
+		System.out.printf("%-30s%-20s%32s\n","|","[4]   EXIT","|");
+		System.out.printf("%-30s%-20s%32s\n","|","","|");
+		System.out.println("+================================================================================+");
 	}
 
 	// Searches for results by author or director
