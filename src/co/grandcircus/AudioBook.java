@@ -28,6 +28,10 @@ public class AudioBook extends Media {
 
 	// to string
 
+	public AudioBook(String string, boolean b, int i, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "AudioBook [runtime=" + runtime + ", title=" + title + ", checkedOut=" + checkedOut + ", dueDate="
