@@ -11,7 +11,6 @@ public class Methods {
 	// Prints menu
 	public void printMenu() {
 		System.out.printf("%-30s%-20s%30s\n","","+--------------------+","");
-
 		System.out.printf("%-30s%-20s%30s\n","","|   UNTOLD STORIES   |","");
 		System.out.printf("%-30s%-20s%30s\n","+=============================","|    LIBRARY MENU    |","=============================+");
 		System.out.printf("%-30s%-20s%30s\n","|","+--------------------+","|");
