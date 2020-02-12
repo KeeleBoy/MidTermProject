@@ -180,8 +180,6 @@ public class Methods {
 	}
 
 	public static void displayTree(Scanner scnr, List<Media> library) {
-
-	public static void displayTree(Scanner scnr, List<Media> library) {
 		// submenu selection
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
 		int userChoice = Validator.getInt(scnr, 1, 3);
@@ -241,8 +239,6 @@ public class Methods {
 		}
 		tempList.clear(); // clears for next method
 	}
-
-	public static void searchTree(Scanner scnr, List<Media> library) {
 
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
