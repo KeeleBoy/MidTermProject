@@ -20,36 +20,17 @@ public class Book extends Media {
 		setAuthor(author);
 	}
 
-//	@Override
-//	public String toString() {
-//
-//		if (checkedOut) {
-//			String bookString = "\"" + title + "\" by " + getAuthor();
-//			int trailing = (60 - bookString.length()) / 2;
-//			String dt = ". ";
-//
-////			String line = dt.repeat(trailing);
-//			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
-//
-////			if (checkedOut) {
-////
-//////			return String.format("%60s%-20s", "", "");
-////				return "Book [Author= " + author + ", title= " + title + ", status= Checked out" + ", dueDate="
-////						+ dueDate + "]";
-////
-////				String line = " ";
-////				for (int i = 0; i < trailing; i++) {
-////					line += dt;
-////				}
-////
-////				return String.format("%-60s%35s", bookString + line, "Unavailable until " + getDueDate());
-////
-////			} else {
-//
-//				return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
-//			}
-//
-//		}
+	@Override
+	public String toString() {
+		String bookString = "\"" + title + "\" by " + getAuthor();
+		if (checkedOut) {
+			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
+
+		} else {
+			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "Available");
+		}
+
+	}
 
 
 	public String getAuthor() {
@@ -61,11 +42,7 @@ public class Book extends Media {
 		return returnAuthor;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [author=" + author + ", title=" + title + ", checkedOut=" + checkedOut + ", dueDate=" + dueDate
-				+ "]";
-	}
+
 
 	public void setAuthor(String author) {
 		List<String> authorList = Arrays.asList(author.split(", "));

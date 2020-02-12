@@ -1,5 +1,5 @@
-To kill a Mockingbird	true	2/26/20	Harper Lee
-Ulysses	false	2/26/20	James Joyce
+To kill a Mockingbird	false	3/1/20	Harper Lee
+Ulysses	false	3/1/20	James Joyce
 The Great Gatsby	false	3/1/20	F. Scott Fitzgerald
 A Portrait of the Artist as a Young Man	false	3/1/20	James Joyce
 Lolita	false	3/1/20	Vladimir Nabokov
@@ -9,7 +9,7 @@ Catch-22	false	3/1/20	Joseph Heller
 Darkness At Noon	false	3/1/20	Arthur Koestler
 Sons and Lovers	false	3/1/20	D.H. Lawrence
 In Search of Lost Time	false	3/1/20	Marcel Proust
-Don Quixote	false	2/26/20	Miguel de Cervantes
+Don Quixote	false	3/1/20	Miguel de Cervantes
 One Hundred Years of Solitude	false	3/1/20	Gabriel Garcia Marquez
 Moby Dick	false	3/1/20	Herman Melville
 War and Peace	false	3/1/20	Leo Tolstoy

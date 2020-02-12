@@ -46,14 +46,14 @@ public class DVD extends Media {
 
 	@Override
 	public String toString() {
-
+		String dvdString = "\"" + title + "\" by " + getDirector() + ", Runtime: " + runtime + "m";
 		if (checkedOut) {
-			return String.format("%-60s%20s", "\"" + title + "\" by " + getDirector() + " " + runtime + "m", "Unavailable until " + getDueDate());
+			return String.format("%-60s%35s", dvdString, "Unavailable until " + getDueDate());
 
 		} else {
-
-			return "DVD [director= " + director + ", title= " + title + ", runtime= " + runtime + ", status= Available";
+			return String.format("%-60s%35s", "\"" + title + "\" by " + getDirector(), "Available");
 		}
+
 	}
 
 }

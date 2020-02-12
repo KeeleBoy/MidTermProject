@@ -11,10 +11,9 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
-		
-		
+
 		// Declare variables
-		Methods mm = new Methods();
+		DisplayMethods mm = new DisplayMethods();
 		Scanner scnr = new Scanner(System.in);
 		boolean userContinue = true;
 		int userChoice;
@@ -26,21 +25,25 @@ public class Main {
 			// Starts by printing menu
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
-			
+
 			// Get user selection
-			userChoice = Validator.getInt(scnr, 1, 4);
+			userChoice = Validator.getInt(scnr, 1, 5);
 			switch (userChoice) {
 			case 1:
 				// Display
-				Methods.displayTree(scnr, mediaList);
+				DisplayMethods.displayTree(scnr, mediaList);
 				break;
 			case 2:
 				// Search
-				Methods.searchTree(scnr, mediaList);
+				DisplayMethods.searchTree(scnr, mediaList);
 				break;
 			case 3:
+				// Sort/Display
+				DisplayMethods.sortTree(mediaList, scnr);
+				break;
+			case 4:
 				// Return
-				Methods.returnItem(scnr, mediaList);
+				ActionMethods.returnItem(scnr, mediaList);
 				break;
 			default:
 				// Exit
@@ -48,25 +51,29 @@ public class Main {
 				System.out.println("Thank you for visiting. Goodbye.");
 			}
 		} while (userContinue);
-	
-	
-	ArrayList<Book> books = new ArrayList<>();
-	ArrayList<DVD> dvds = new ArrayList<>();
 
-	for (Media media : mediaList) {
+		ArrayList<Book> books = new ArrayList<>();
+		ArrayList<DVD> dvds = new ArrayList<>();
 
-		if (media instanceof Book) {
+		for (Media media : mediaList) {
 
-			books.add((Book) media);
+			if (media instanceof Book) {
 
-		} else if (media instanceof DVD) {
+				books.add((Book) media);
 
-			dvds.add((DVD) media);
+			} else if (media instanceof DVD) {
+
+				dvds.add((DVD) media);
+			}
+
 		}
 
+		
+		
+//		DVDs.DVDsToFile(DVDs.getDVDList());
+//		Books.BooksToFile(Books.getBookList());
+//		DVDs.mediaFromFiles();
+		DVDs.fileHelper.rewrite(dvds);
+		Books.fileHelper.rewrite(books);
 	}
-	
-	DVDs.fileHelper.rewrite(dvds);
-	Books.fileHelper.rewrite(books);
-}
 }

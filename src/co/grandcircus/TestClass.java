@@ -16,7 +16,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("Coppola", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("Coppola", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 2);	
 		
@@ -28,7 +28,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("Lewis", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("Lewis", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 0);	
 		
@@ -39,7 +39,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("cop", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("cop", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 2);	
 		
@@ -50,7 +50,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("a", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("a", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 27);	
 		
@@ -61,7 +61,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("12312", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("12312", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 0);	
 		
@@ -72,7 +72,7 @@ public class TestClass {
 		
 		ArrayList<Media> list = new ArrayList<>();
 		
-		list = Methods.filterByAuthor("!@#$A%", DVDs.mediaFromFiles());
+		list = DisplayMethods.filterByAuthor("!@#$A%", DVDs.mediaFromFiles());
 		
 		assertTrue(list.size() == 0);	
 		
