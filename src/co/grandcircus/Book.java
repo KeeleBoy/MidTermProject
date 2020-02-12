@@ -22,12 +22,12 @@ public class Book extends Media {
 	@Override
 	public String toString() {
 		if (status) {
-			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
-					+ ", dueDate=" + dueDate + "]";
-			
-		} else {		
-		
-		return "Book [Author= " + author + ", title= " + title + ", status= Available";
+			return "Book [Author= " + author + ", title= " + title + ", status= Checked out" + ", dueDate=" + dueDate
+					+ "]";
+
+		} else {
+
+			return "Book [Author= " + author + ", title= " + title + ", status= Available";
 		}
 	}
 

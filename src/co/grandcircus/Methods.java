@@ -126,7 +126,7 @@ public class Methods {
 		itemToReturn.setStatus(false);
 		System.out.println("You have returned: " + itemToReturn.getTitle());
 	}
-	
+
 	public static void displayTree(Scanner scnr, List<Media> library) {
 
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
@@ -142,7 +142,7 @@ public class Methods {
 		// FIXME Sam Sort by title class, mix together with arrayList master
 //			break;
 		case 1:
-			//display books
+			// display books
 			for (Media item : library) {
 				if (item instanceof Book) {
 					System.out.println(counter++ + ". " + item);
@@ -151,7 +151,7 @@ public class Methods {
 			}
 			break;
 		case 2:
-			//display DVD
+			// display DVD
 			for (Media item : library) {
 				if (item instanceof DVD) {
 					System.out.println(counter++ + ". " + item);
@@ -160,7 +160,7 @@ public class Methods {
 			}
 			break;
 		default:
-			//display all
+			// display all
 			for (Media item : library) {
 				System.out.println(counter++ + ". " + item);
 				tempList.add(item);
@@ -179,6 +179,7 @@ public class Methods {
 		}
 		scnr.nextLine(); // Clear scanner
 	}
+
 	public static void searchTree(Scanner scnr, List<Media> library) {
 
 		System.out.println("Search by [1] Author/Director, [2] Title");
