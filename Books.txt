@@ -1,20 +1,20 @@
-To kill a Mockingbird	false	2020-03-01	Harper Lee
-Ulysses	false	2020-03-01	James Joyce
-The Great Gatsby	false	2020-03-01	F. Scott Fitzgerald
-A Portrait of the Artist as a Young Man	false	2020-03-01	James Joyce
-Lolita	false	2020-03-01	Vladimir Nabokov
-Brave New World	false	2020-03-01	Aldous Huxley
-The Sound and the Fury	false	2020-03-01	William Faulkner
-Catch-22	false	2020-03-01	Joseph Heller
-Darkness At Noon	false	2020-03-01	Arthur Koestler
-Sons and Lovers	false	2020-03-01	D.H. Lawrence
-In Search of Lost Time	false	2020-03-01	Marcel Proust
-Don Quixote	false	2020-03-01	Miguel de Cervantes
-One Hundred Years of Solitude	false	2020-03-01	Gabriel Garcia Marquez
-Moby Dick	false	2020-03-01	Herman Melville
-War and Peace	false	2020-03-01	Leo Tolstoy
-Hamlet	false	2020-03-01	William Shakespeare
-The Catcher in the Rye	false	2020-03-01	J. D. Salinger
-The Odyssey	false	2020-03-01	Homer
-The Brothers Karamazov	false	2020-03-01	Fyodor Dostoyevsky
-Crime and Punishment	false	2020-03-01	Fyodor Dostoyevsky
+Brave New World	false	2020-01-03	Aldous Huxley
+Darkness At Noon	false	2020-01-03	Arthur Koestler
+Sons and Lovers	false	2020-01-03	D.H. Lawrence
+The Great Gatsby	false	2020-01-03	F. Scott Fitzgerald
+The Brothers Karamazov	false	2020-01-03	Fyodor Dostoyevsky
+Crime and Punishment	false	2020-01-03	Fyodor Dostoyevsky
+One Hundred Years of Solitude	false	2020-01-03	Gabriel Garcia Marquez
+To kill a Mockingbird	false	2020-01-03	Harper Lee
+Moby Dick	false	2020-01-03	Herman Melville
+The Odyssey	false	2020-01-03	Homer
+The Catcher in the Rye	false	2020-01-03	J. D. Salinger
+Ulysses	false	2020-01-03	James Joyce
+A Portrait of the Artist as a Young Man	false	2020-01-03	James Joyce
+Catch-22	false	2020-01-03	Joseph Heller
+War and Peace	false	2020-01-03	Leo Tolstoy
+In Search of Lost Time	false	2020-01-03	Marcel Proust
+Don Quixote	false	2020-01-03	Miguel de Cervantes
+Lolita	false	2020-01-03	Vladimir Nabokov
+The Sound and the Fury	false	2020-01-03	William Faulkner
+Hamlet	false	2020-01-03	William Shakespeare

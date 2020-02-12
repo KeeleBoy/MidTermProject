@@ -2,6 +2,8 @@ package co.grandcircus;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,7 +45,7 @@ public class Methods {
 			}
 		}
 		// if there was at least one match
-		if (tempList.size() > 1) {
+		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
@@ -75,13 +77,13 @@ public class Methods {
 			}
 		}
 		// if there was at least one match
-		if (tempList.size() > 1) {
+		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
-				scnr.nextLine();
+//				scnr.nextLine();
 				Methods.checkout(index, scnr);
 			} else {
 				// if not, assumes user wants to quit, clears scanner, and exits
@@ -124,59 +126,44 @@ public class Methods {
 		// sets variables
 		Media itemToReturn = library.get(0);
 		boolean found = false;
-		boolean cannotFind = false;
-		// gets user input
-		System.out.println("Enter title:");
-		String title = scnr.nextLine();
-		title = title.toUpperCase(); // to correct inconsistencies in capitalization
+		int counter = 1;
 
-		// searches first by title
-		do {
-			for (Media item : library) {
-				if (item.getTitle().toUpperCase().contains(title)) {
-					itemToReturn = item;
-					found = true;
-				}
+		for (Media item : library) {
+			if (item.isStatus()) {
+				System.out.println(counter++ + ". " + item);
+				tempList.add(item);
 			}
-			cannotFind = true;
-		} while (!found || !cannotFind);
-
-		// if the searcher found an item, prints item and asks if correct
-		if (found) {
-			System.out.println(itemToReturn);
-			System.out.println("Is this the correct item? (Y/N)");
-			found = Validator.yesOrNo(scnr);
 		}
+		while (tempList.size() > 0) {
 
-		// if the searcher could not find a match and the user has rejected a proposed
-		// match
-		if (cannotFind && !found) {
-			// prints checked-out items
-			int counter = 1;
-			for (Media item : library) {
-				if (item.isStatus()) {
-					System.out.println(counter++ + ". " + item);
-					tempList.add(item);
-				}
-			}
+			System.out.println("Here are some checked out items.");
+
 			// asks for user input to select item to return
-			System.out.println("Enter number:");
-			int userChoice = Validator.getInt(scnr, 1, tempList.size());
-			tempList.get(userChoice - 1);
-			// confirms
-			System.out.println("Confirm return (Y/N)");
-			found = Validator.yesOrNo(scnr);
-			// prints item
-			if (found) {
-				itemToReturn = tempList.get(userChoice - 1);
+			System.out.println("Which item would you like to return? Enter number (\"Q\" to Quit)");
+			if (scnr.hasNextInt()) {
+				int userChoice = Validator.getInt(scnr, 1, tempList.size());
+				tempList.get(userChoice - 1);
+				// confirms
+				System.out.println("Confirm return (Y/N)");
+				found = Validator.yesOrNo(scnr);
+				// prints item
+				if (found) {
+					itemToReturn = tempList.get(userChoice - 1);
+					itemToReturn.setStatus(false);
+					System.out.println("You have returned: " + itemToReturn.getTitle());
+				} else {
+					System.out.println(
+							"Remember " + itemToReturn.getTitle() + " is due back on " + itemToReturn.getDueDate());
+				}
 			} else {
-				System.out.println("Cannot find item to return, please try again.");
+				// if not, assumes user wants to quit, clears scanner, and exits
+				scnr.nextLine();
 			}
+			// returns item
+
+			tempList.clear(); // Clear list for next method
+
 		}
-		// returns item
-		itemToReturn.setStatus(false);
-		System.out.println("You have returned: " + itemToReturn.getTitle());
-		tempList.clear(); // Clear list for next method
 	}
 
 	public static void displayTree(Scanner scnr, List<Media> library) {
@@ -240,7 +227,6 @@ public class Methods {
 		tempList.clear(); // clears for next method
 	}
 
-
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
 		System.out.println("Search by [1] Author/Director, [2] Title");
@@ -259,5 +245,52 @@ public class Methods {
 			String title = scnr.nextLine();
 			Methods.byTitle(title, library, scnr);
 		}
+	}
+
+	public static ArrayList<Media> sortByTitle(List<Media> library) {
+
+		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle());
+
+		Collections.sort(library, compareByTitle);
+
+		return (ArrayList<Media>) library;
+	}
+
+	public static ArrayList<Media> sortByAuthor(List<Media> library) {
+		
+		ArrayList<Book> books = new ArrayList<>();
+		ArrayList<DVD> dvds = new ArrayList<>();
+
+		for (Media media : library) {
+			
+			if (media instanceof Book) {
+				
+				books.add((Book) media);
+				
+			} else if (media instanceof DVD) {
+				
+				dvds.add( (DVD) media);
+			}
+			
+		}
+		
+		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor());
+
+		Collections.sort(books, compAuthors);
+		
+		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector());
+
+		Collections.sort(dvds, compDirector);
+		
+		
+		DVDs.fileHelper.rewrite(dvds);
+		Books.fileHelper.rewrite(books);
+		
+		library.clear();
+		library = (ArrayList) DVDs.fileHelper.readAll();
+		library.addAll(Books.fileHelper.readAll());	
+		
+
+		return (ArrayList<Media>) library;
 	}
 }
