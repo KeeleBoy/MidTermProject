@@ -1,4 +1,4 @@
-package co.grandcircus.objectClasses;
+package co.grandcircus;
 
 public class AudioBookLineConverter implements LineConverter<AudioBook> {
 

@@ -1,4 +1,4 @@
-package co.grandcircus.objectClasses;
+package co.grandcircus;
 
 import java.time.LocalDate;
 import java.util.Arrays;

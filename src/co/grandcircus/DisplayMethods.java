@@ -7,12 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-import co.grandcircus.objectClasses.Book;
-import co.grandcircus.objectClasses.Books;
-import co.grandcircus.objectClasses.DVD;
-import co.grandcircus.objectClasses.DVDs;
-import co.grandcircus.objectClasses.Media;
-
 public class DisplayMethods {
 	public static ArrayList<Media> tempList = new ArrayList<>();
 
