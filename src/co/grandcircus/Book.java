@@ -20,37 +20,37 @@ public class Book extends Media {
 		setAuthor(author);
 	}
 
-	@Override
-	public String toString() {
-
-		if (checkedOut) {
-			String bookString = "\"" + title + "\" by " + getAuthor();
-			int trailing = (60 - bookString.length()) / 2;
-			String dt = ". ";
-
-//			String line = dt.repeat(trailing);
-			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
-
-//			if (checkedOut) {
+//	@Override
+//	public String toString() {
 //
-////			return String.format("%60s%-20s", "", "");
-//				return "Book [Author= " + author + ", title= " + title + ", status= Checked out" + ", dueDate="
-//						+ dueDate + "]";
+//		if (checkedOut) {
+//			String bookString = "\"" + title + "\" by " + getAuthor();
+//			int trailing = (60 - bookString.length()) / 2;
+//			String dt = ". ";
 //
-//				String line = " ";
-//				for (int i = 0; i < trailing; i++) {
-//					line += dt;
-//				}
+////			String line = dt.repeat(trailing);
+//			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
 //
-//				return String.format("%-60s%35s", bookString + line, "Unavailable until " + getDueDate());
+////			if (checkedOut) {
+////
+//////			return String.format("%60s%-20s", "", "");
+////				return "Book [Author= " + author + ", title= " + title + ", status= Checked out" + ", dueDate="
+////						+ dueDate + "]";
+////
+////				String line = " ";
+////				for (int i = 0; i < trailing; i++) {
+////					line += dt;
+////				}
+////
+////				return String.format("%-60s%35s", bookString + line, "Unavailable until " + getDueDate());
+////
+////			} else {
 //
-//			} else {
+//				return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
+//			}
+//
+//		}
 
-				return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
-			}
-
-		}
-}
 
 	public String getAuthor() {
 		String returnAuthor = "";
@@ -59,6 +59,12 @@ public class Book extends Media {
 		}
 		returnAuthor = returnAuthor.substring(0, returnAuthor.length() - 2);
 		return returnAuthor;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [author=" + author + ", title=" + title + ", checkedOut=" + checkedOut + ", dueDate=" + dueDate
+				+ "]";
 	}
 
 	public void setAuthor(String author) {

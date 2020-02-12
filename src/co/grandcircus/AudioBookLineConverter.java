@@ -4,7 +4,7 @@ public class AudioBookLineConverter implements LineConverter<AudioBook> {
 
 	@Override
 	public String toLine(AudioBook object) {
-		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.getAuthor(), object.isStatus(),
+		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.getAuthor(), object.isCheckedOut(),
 				object.getRuntime());
 	}
 
