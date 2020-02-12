@@ -24,8 +24,10 @@ public class Book extends Media {
 	public String toString() {
 
 		if (checkedOut) {
-			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
-					+ ", dueDate=" + dueDate + "]";
+			
+			return String.format("%60s%-20s", "", "");
+//			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
+//					+ ", dueDate=" + dueDate + "]";
 			
 		} else {		
 		
