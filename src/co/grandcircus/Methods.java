@@ -43,7 +43,7 @@ public class Methods {
 			}
 		}
 		// if there was at least one match
-		if (tempList.size() > 1) {
+		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
@@ -75,7 +75,7 @@ public class Methods {
 			}
 		}
 		// if there was at least one match
-		if (tempList.size() > 1) {
+		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
@@ -222,7 +222,7 @@ public class Methods {
 			break;
 		}
 		// if there was at least one match
-		if (tempList.size() > 1) {
+		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
@@ -240,6 +240,7 @@ public class Methods {
 		tempList.clear(); // clears for next method
 	}
 
+	
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
 		System.out.println("Search by [1] Author/Director, [2] Title");

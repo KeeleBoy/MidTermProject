@@ -7,7 +7,7 @@ public abstract class Media {
 
 
 	String title;
-	boolean status;
+	boolean checkedOut;
 	LocalDate dueDate;
 
 	public String getTitle() {
@@ -19,11 +19,11 @@ public abstract class Media {
 	}
 
 	public boolean isStatus() {
-		return status;
+		return checkedOut;
 	}
 
 	public void setStatus(boolean status) {
-		this.status = status;
+		this.checkedOut = status;
 	}
 
 	public LocalDate getDueDate() {

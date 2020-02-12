@@ -26,11 +26,11 @@ public class DVDLineConverter implements LineConverter<DVD> {
 			status = false; // otherwise status becomes false
 		}
 
-	
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-dd-MM"); // pulls the 3rd segment and creates a Date variable
+	
+
 		dueDate = lines[2];
 		LocalDate setDueDate = LocalDate.parse(dueDate, format);
-		
 		
 		int runtime = Integer.parseInt(lines[3]); // pulls the 4th segment for the runtime portion of the DVD
 		String director = lines[4]; // pulls the 5th segment for the director
