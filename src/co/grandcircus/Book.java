@@ -24,10 +24,14 @@ public class Book extends Media {
 	public String toString() {
 
 		if (checkedOut) {			
-			return String.format("%-60s%39s", "\"" + title + "\" by " + getAuthor(), "Unavailable until " + getDueDate());
+			String bookString = "\"" + title + "\" by " + getAuthor();
+			int trailing = (60 - bookString.length()) / 2;
+			String dt = ". ";
+//			String line = dt.repeat(trailing);
+			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
 		} else {		
 		
-			return String.format("%-60s%39s", "\"" + title + "\" by " + getAuthor(), "");
+			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "");
 		}
 	}
 
