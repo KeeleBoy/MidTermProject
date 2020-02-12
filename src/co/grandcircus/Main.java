@@ -3,6 +3,12 @@ package co.grandcircus;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import co.grandcircus.objectClasses.Book;
+import co.grandcircus.objectClasses.Books;
+import co.grandcircus.objectClasses.DVD;
+import co.grandcircus.objectClasses.DVDs;
+import co.grandcircus.objectClasses.Media;
+
 public class Main {
 
 	/*
@@ -14,7 +20,7 @@ public class Main {
 		
 		
 		// Declare variables
-		Methods mm = new Methods();
+		DisplayMethods mm = new DisplayMethods();
 		Scanner scnr = new Scanner(System.in);
 		boolean userContinue = true;
 		int userChoice;
@@ -32,15 +38,15 @@ public class Main {
 			switch (userChoice) {
 			case 1:
 				// Display
-				Methods.displayTree(scnr, mediaList);
+				DisplayMethods.displayTree(scnr, mediaList);
 				break;
 			case 2:
 				// Search
-				Methods.searchTree(scnr, mediaList);
+				DisplayMethods.searchTree(scnr, mediaList);
 				break;
 			case 3:
 				// Return
-				Methods.returnItem(scnr, mediaList);
+				DisplayMethods.returnItem(scnr, mediaList);
 				break;
 			default:
 				// Exit

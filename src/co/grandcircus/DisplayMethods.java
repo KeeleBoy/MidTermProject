@@ -7,7 +7,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-public class Methods {
+import co.grandcircus.objectClasses.Book;
+import co.grandcircus.objectClasses.Books;
+import co.grandcircus.objectClasses.DVD;
+import co.grandcircus.objectClasses.DVDs;
+import co.grandcircus.objectClasses.Media;
+
+public class DisplayMethods {
 	public static ArrayList<Media> tempList = new ArrayList<>();
 
 	// Prints menu
@@ -21,12 +27,13 @@ public class Methods {
 		System.out.printf("%-40s%-20s%42s\n", "|", " ", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "[1]   DISPLAY", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "[2]   SEARCH", "|");
-		System.out.printf("%-40s%-20s%42s\n", "|", "[3]   RETURN ITEM", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[3]   SORT", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[4]   RETURN ITEM", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "[4]   EXIT", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "", "|");
 		System.out.println("+====================================================================================================+");
 	}
-	
+
 	public static ArrayList<Media> filterByAuthor(String name, List<Media> library) {
 		ArrayList<Media> results = new ArrayList<>();
 		for (Media item : library) {
@@ -44,11 +51,9 @@ public class Methods {
 
 				// Heres an attempt to only print books that are not checked out
 
-				if (book.isCheckedOut() == false) {
-					if (book.getAuthor().toUpperCase().contains(name)) {
-						// Stores in temporary array of items
-						results.add(book);
-					}
+				if (book.getAuthor().toUpperCase().contains(name)) {
+					// Stores in temporary array of items
+					results.add(book);
 				}
 			}
 		}
@@ -56,11 +61,11 @@ public class Methods {
 	}
 
 	// Searches for results by author or director
-	public static void byAuthorDirector(String name, List<Media> library, Scanner scnr) {
+	public static void displayByAuthor(String name, List<Media> library, Scanner scnr) {
 		name = name.toUpperCase(); // to correct inconsistencies in capitalization
 		int counter = 1; // Counter for menu of items that match author/director search key
 		tempList = filterByAuthor(name, library);
-		
+
 		for (Media item : tempList) {
 			System.out.println(counter++ + ". " + item);
 		}
@@ -73,7 +78,7 @@ public class Methods {
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
 				scnr.nextLine();
-				Methods.checkout(index, scnr);
+				DisplayMethods.checkout(index, scnr);
 			} else {
 				// if not, assumes user wants to quit, clears scanner, and exits
 				scnr.nextLine();
@@ -85,20 +90,19 @@ public class Methods {
 		tempList.clear(); // clears for next method
 	}
 
-	public static void byTitle(String title, List<Media> library, Scanner scnr) {
+	public static void displayByTitle(String title, List<Media> library, Scanner scnr) {
 		// Searches by title and displays results
 		title = title.toUpperCase(); // to correct inconsistencies in capitalization
 		int counter = 1; // Counter for items to be displayed
 		for (Media m : library) {
 			// Loops through looking for match
+
 			// Heres an attempt to only print books that are not checked out
 
-			if (m.isCheckedOut() == false) {
-				if (m.getTitle().toUpperCase().contains(title)) {
-					System.out.println(counter++ + ". " + m);
-					// Adds item to tempList
-					tempList.add(m);
-				}
+			if (m.getTitle().toUpperCase().contains(title)) {
+				System.out.println(counter++ + ". " + m);
+				// Adds item to tempList
+				tempList.add(m);
 			}
 		}
 		// if there was at least one match
@@ -108,8 +112,7 @@ public class Methods {
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
-//				scnr.nextLine();
-				Methods.checkout(index, scnr);
+				DisplayMethods.checkout(index, scnr);
 			} else {
 				// if not, assumes user wants to quit, clears scanner, and exits
 				scnr.nextLine();
@@ -124,26 +127,30 @@ public class Methods {
 	public static void checkout(int index, Scanner scnr) {
 		// decrement index to match 0,1,2 indexing
 		index--;
-		// prints item to check out
-		System.out.println(tempList.get(index));
-		System.out.println("Is this correct? (Y/N)");
-		boolean userChoice = Validator.yesOrNo(scnr);
-		// If they want to check out the item
-		if (userChoice) {
-			// assigns to variable
-			Media itemToCheckout = tempList.get(index);
-			// calculates due date
-			LocalDate dueDate = LocalDate.now().plusDays(14);
-			System.out.println("Due Date: " + dueDate.toString());
-			System.out.println("Confirm Checkout (Y/N):");
-			boolean confirm = Validator.yesOrNo(scnr);
-			// if user agrees to due date
-			if (confirm) {
-				itemToCheckout.setDueDate(dueDate);
-				itemToCheckout.setCheckedOut(true);
+		if (!tempList.get(index).isCheckedOut()) {
+			// prints item to check out
+			System.out.println(tempList.get(index));
+			System.out.println("Is this correct? (Y/N)");
+			boolean userChoice = Validator.yesOrNo(scnr);
+			// If they want to check out the item
+			if (userChoice) {
+				// assigns to variable
+				Media itemToCheckout = tempList.get(index);
+				// calculates due date
+				LocalDate dueDate = LocalDate.now().plusDays(14);
+				System.out.println("Due Date: " + dueDate.toString());
+				System.out.println("Confirm Checkout (Y/N):");
+				boolean confirm = Validator.yesOrNo(scnr);
+				// if user agrees to due date
+				if (confirm) {
+					itemToCheckout.setDueDate(dueDate);
+					itemToCheckout.setCheckedOut(true);
+				}
+				// prints reminder message
+				System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
 			}
-			// prints reminder message
-			System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
+		} else {
+			System.out.println("That item is not available.");
 		}
 	}
 
@@ -153,54 +160,49 @@ public class Methods {
 		boolean found = false;
 		int counter = 1;
 
-	
 		for (Media item : library) {
 			if (item.isCheckedOut()) {
 				System.out.println(counter++ + ". " + item);
 				tempList.add(item);
 			}
-		}	// searches first by title
+		}
 
-				while (tempList.size() > 0) {
+		while (tempList.size() > 0) {
 
-				System.out.println("Here are some checked out items.");
+			System.out.println("Here are some checked out items.");
 
-				// asks for user input to select item to return
-				System.out.println("Which item would you like to return? Enter number (\"Q\" to Quit)");
-				if (scnr.hasNextInt()) {
-					int userChoice = Validator.getInt(scnr, 1, tempList.size());
-					tempList.get(userChoice - 1);
-					// confirms
-					System.out.println("Confirm return (Y/N)");
-					found = Validator.yesOrNo(scnr);
-					// prints item
-					if (found) {
-						itemToReturn = tempList.get(userChoice - 1);
-						itemToReturn.setCheckedOut(false);
-						System.out.println("You have returned: " + itemToReturn.getTitle());
-					} else {
-						System.out.println(
-								"Remember " + itemToReturn.getTitle() + " is due back on " + itemToReturn.getDueDate());
-					}
+			// asks for user input to select item to return
+			System.out.println("Which item would you like to return? Enter number (\"Q\" to Quit)");
+			if (scnr.hasNextInt()) {
+				int userChoice = Validator.getInt(scnr, 1, tempList.size());
+				tempList.get(userChoice - 1);
+				// confirms
+				System.out.println("Confirm return (Y/N)");
+				found = Validator.yesOrNo(scnr);
+				// prints item
+				if (found) {
+					itemToReturn = tempList.get(userChoice - 1);
+					itemToReturn.setCheckedOut(false);
+					System.out.println("You have returned: " + itemToReturn.getTitle());
 				} else {
-					// if not, assumes user wants to quit, clears scanner, and exits
-					scnr.nextLine();
+					System.out.println(
+							"Remember " + itemToReturn.getTitle() + " is due back on " + itemToReturn.getDueDate());
 				}
-				// returns item
-
-				tempList.clear(); // Clear list for next method
-				}
+			} else {
+				// if not, assumes user wants to quit, clears scanner, and exits
+				scnr.nextLine();
 			}
-		
-	
+			// returns item
+			tempList.clear(); // Clear list for next method
+		}
+	}
 
 	public static void displayTree(Scanner scnr, List<Media> library) {
 		// submenu selection
 		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
 		int userChoice = Validator.getInt(scnr, 1, 3);
 		int counter = 1;
-		// switch case for selections, should break this up into multiple methods FIXME
-		// Sam
+		// switch case for selections
 		switch (userChoice) {
 //		case 1:
 		// display by creator
@@ -213,32 +215,26 @@ public class Methods {
 		case 1:
 			// display books
 			for (Media item : library) {
-				if (item.isCheckedOut() == false) {
-					if (item instanceof Book) {
-						System.out.println(counter++ + ". " + item);
-						tempList.add(item);
-					}
+				if (item instanceof Book) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
 				}
 			}
 			break;
 		case 2:
 			// display DVD
 			for (Media item : library) {
-				if (item.isCheckedOut() == false) {
-					if (item instanceof DVD) {
-						System.out.println(counter++ + ". " + item);
-						tempList.add(item);
-					}
+				if (item instanceof DVD) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
 				}
 			}
 			break;
 		default:
 			// display all
 			for (Media item : library) {
-				if (item.isCheckedOut() == false) {
-					System.out.println(counter++ + ". " + item);
-					tempList.add(item);
-				}
+				System.out.println(counter++ + ". " + item);
+				tempList.add(item);
 			}
 			break;
 		}
@@ -249,7 +245,7 @@ public class Methods {
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
-				Methods.checkout(index, scnr);
+				DisplayMethods.checkout(index, scnr);
 			} else {
 				// if not, assumes user wants to quit, clears scanner, and exits
 				scnr.nextLine();
@@ -271,13 +267,13 @@ public class Methods {
 			// author director
 			System.out.println("Enter author/director name:");
 			String name = scnr.nextLine();
-			Methods.byAuthorDirector(name, library, scnr);
+			DisplayMethods.displayByAuthor(name, library, scnr);
 			break;
 		default:
 			// title
 			System.out.println("Enter title:");
 			String title = scnr.nextLine();
-			Methods.byTitle(title, library, scnr);
+			DisplayMethods.displayByTitle(title, library, scnr);
 		}
 	}
 
@@ -307,8 +303,6 @@ public class Methods {
 			}
 
 		}
-		
-		
 
 		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor());
 

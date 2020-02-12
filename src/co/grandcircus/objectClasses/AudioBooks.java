@@ -1,4 +1,4 @@
-package co.grandcircus;
+package co.grandcircus.objectClasses;
 
 import java.util.ArrayList;
 

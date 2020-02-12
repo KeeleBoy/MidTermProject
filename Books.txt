@@ -1,4 +1,4 @@
-To kill a Mockingbird	true	2/26/20	Harper Lee
+To kill a Mockingbird	false	2/26/20	Harper Lee
 Ulysses	false	2/26/20	James Joyce
 The Great Gatsby	false	3/1/20	F. Scott Fitzgerald
 A Portrait of the Artist as a Young Man	false	3/1/20	James Joyce
