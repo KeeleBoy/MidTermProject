@@ -23,17 +23,12 @@ public class Book extends Media {
 	@Override
 	public String toString() {
 
-		if (checkedOut) {
-			
-			return String.format("%60s%-20s", "", "");
-//			return "Book [Author= " + author + ", title= " + title + ", status= Checked out"
-//					+ ", dueDate=" + dueDate + "]";
-			
+		if (checkedOut) {			
+			return String.format("%-60s%39s", "\"" + title + "\" by " + getAuthor(), "Unavailable until " + getDueDate());
 		} else {		
 		
-		return "Book [Author= " + author + ", title= " + title + ", status= Available]";
-
-			}
+			return String.format("%-60s%39s", "\"" + title + "\" by " + getAuthor(), "");
+		}
 	}
 
 	public String getAuthor() {

@@ -13,33 +13,30 @@ public class Methods {
 	// Prints menu
 	public void printMenu() {
 
-		System.out.printf("%-30s%-20s%30s\n", "", "+--------------------+", "");
-		System.out.printf("%-30s%-20s%30s\n", "", "|   UNTOLD STORIES   |", "");
-		System.out.printf("%-30s%-20s%30s\n", "+=============================", "|    LIBRARY MENU    |",
-				"=============================+");
-		System.out.printf("%-30s%-20s%30s\n", "|", "+--------------------+", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", " ", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", "[1]   DISPLAY", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", "[2]   SEARCH", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", "[3]   RETURN ITEM", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", "[4]   EXIT", "|");
-		System.out.printf("%-30s%-20s%32s\n", "|", "", "|");
-		System.out.println("+================================================================================+");
+		System.out.printf("%-40s%-20s%40s\n", "", "+--------------------+", "");
+		System.out.printf("%-40s%-20s%40s\n", "", "|   UNTOLD STORIES   |", "");
+		System.out.printf("%-40s%-20s%40s\n", "+======================================", "|    LIBRARY MENU    |",
+				"======================================+");
+		System.out.printf("%-40s%-20s%40s\n", "|", "+--------------------+", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", " ", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[1]   DISPLAY", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[2]   SEARCH", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[3]   RETURN ITEM", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[4]   EXIT", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "", "|");
+		System.out.println("+====================================================================================================+");
 	}
-
-	// Searches for results by author or director
-	public static void byAuthorDirector(String name, List<Media> library, Scanner scnr) {
-		name = name.toUpperCase(); // to correct inconsistencies in capitalization
-		int counter = 1; // Counter for menu of items that match author/director search key
+	
+	public static ArrayList<Media> filterByAuthor(String name, List<Media> library) {
+		ArrayList<Media> results = new ArrayList<>();
 		for (Media item : library) {
 			// Loops through media items
 			if (item instanceof DVD) {
 				// If DVD, explicit cast to DVD type and searches using the getDirector method
 				DVD dvd = (DVD) item;
 				if (dvd.getDirector().toUpperCase().contains(name)) {
-					System.out.println(counter++ + ". " + dvd);
 					// Stores in temporary array of items
-					tempList.add(dvd);
+					results.add(dvd);
 				}
 			} else {
 				// if Book, explicit cast to Book type and searches using the getAuthor method
@@ -47,15 +44,27 @@ public class Methods {
 
 				// Heres an attempt to only print books that are not checked out
 
-				if (book.checkedOut = false) {
+				if (book.getCheckedOut() == false) {
 					if (book.getAuthor().toUpperCase().contains(name)) {
-						System.out.println(counter++ + ". " + book);
 						// Stores in temporary array of items
-						tempList.add(book);
+						results.add(book);
 					}
 				}
 			}
 		}
+		return results;
+	}
+
+	// Searches for results by author or director
+	public static void byAuthorDirector(String name, List<Media> library, Scanner scnr) {
+		name = name.toUpperCase(); // to correct inconsistencies in capitalization
+		int counter = 1; // Counter for menu of items that match author/director search key
+		tempList = filterByAuthor(name, library);
+		
+		for (Media item : tempList) {
+			System.out.println(counter++ + ". " + item);
+		}
+		
 		// if there was at least one match
 		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
