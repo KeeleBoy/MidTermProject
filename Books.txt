@@ -8,3 +8,13 @@ The Sound and the Fury	false	2020-03-01	William Faulkner
 Catch-22	false	2020-03-01	Joseph Heller
 Darkness At Noon	false	2020-03-01	Arthur Koestler
 Sons and Lovers	false	2020-03-01	D.H. Lawrence
+In Search of Lost Time	false	2020-03-01	Marcel Proust
+Don Quixote	false	2020-03-01	Miguel de Cervantes
+One Hundred Years of Solitude	false	2020-03-01	Gabriel Garcia Marquez
+Moby Dick	false	2020-03-01	Herman Melville
+War and Peace	false	2020-03-01	Leo Tolstoy
+Hamlet	false	2020-03-01	William Shakespeare
+The Catcher in the Rye	false	2020-03-01	J. D. Salinger
+The Odyssey	false	2020-03-01	Homer
+The Brothers Karamazov	false	2020-03-01	Fyodor Dostoyevsky
+Crime and Punishment	false	2020-03-01	Fyodor Dostoyevsky

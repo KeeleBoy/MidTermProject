@@ -27,8 +27,6 @@ public class DVDs {
 		dvds.add(new DVD("E.T. The Extra Terrestrial", false, setDueDate, 121, "Steven Speilberg"));
 		dvds.add(new DVD("2001: A Space Odyssey", false, setDueDate, 164, "Stanley Kubrick"));
 		dvds.add(new DVD("Schindler's List", false, setDueDate, 197, "Steven Speilberg"));
-
-		/*
 		dvds.add(new DVD("Raging Bill", false, setDueDate, 129, "Martin Scorsese"));
 		dvds.add(new DVD("Gone with the Wind", false, setDueDate, 238, "Sam Wood"));
 		dvds.add(new DVD("One Flew Over the Cuckoos Nest", false, setDueDate, 133, "Milos Forman"));
@@ -37,10 +35,9 @@ public class DVDs {
 		dvds.add(new DVD("Psycho", false, setDueDate, 109, "Alfred Hitchcock"));
 		dvds.add(new DVD("On the Waterfront", false, setDueDate, 108, "Elia Kazan"));
 		dvds.add(new DVD("Forrest Gump", false, setDueDate, 142, "Robert Zemeckis"));
-		dvds.add(new DVD("2001: A Space Odyssey", false, setDueDate, 149, "Stanley Kubrick"));
-		dvds.add(new DVD("E.T. the Extra-Terrestrial", false, setDueDate, 115, "Steven Spielberg"));
 
-		*/
+
+		
 		return dvds;
 
 	}
