@@ -7,7 +7,7 @@ public class BookLineConverter implements LineConverter<Book> {
 
 	@Override
 	public String toLine(Book object) { 
-		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.isStatus(), object.getDueDate(),
+		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.isCheckedOut(), object.getDueDate(),
 				object.getAuthor());
 	}
 

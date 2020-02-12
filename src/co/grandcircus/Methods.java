@@ -47,7 +47,7 @@ public class Methods {
 
 				// Heres an attempt to only print books that are not checked out
 
-				if (book.checkedOut = false) {
+				if (book.isCheckedOut() == false) {
 					if (book.getAuthor().toUpperCase().contains(name)) {
 						System.out.println(counter++ + ". " + book);
 						// Stores in temporary array of items
@@ -85,7 +85,7 @@ public class Methods {
 
 			// Heres an attempt to only print books that are not checked out
 
-			if (m.checkedOut = false) {
+			if (m.isCheckedOut() == false) {
 				if (m.getTitle().toUpperCase().contains(title)) {
 					System.out.println(counter++ + ". " + m);
 					// Adds item to tempList
@@ -132,7 +132,7 @@ public class Methods {
 			// if user agrees to due date
 			if (confirm) {
 				itemToCheckout.setDueDate(dueDate);
-				itemToCheckout.setStatus(true);
+				itemToCheckout.setCheckedOut(true);
 			}
 			// prints reminder message
 			System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
@@ -145,27 +145,15 @@ public class Methods {
 		boolean found = false;
 		int counter = 1;
 
-		System.out.println("Enter title.");
-		String title = scnr.nextLine();
-		title = title.toUpperCase();
-
+	
 		for (Media item : library) {
-			if (item.isStatus()) {
+			if (item.isCheckedOut()) {
 				System.out.println(counter++ + ". " + item);
 				tempList.add(item);
+			}
+		}	// searches first by title
 
-				// searches first by title
-				do {
-					for (Media item2 : library) {
-						if (item.checkedOut = false) {
-							if (item.getTitle().toUpperCase().contains(title)) {
-								itemToReturn = item;
-								found = true;
-							}
-						}
-
-					}
-				} while (tempList.size() > 0);
+				while (tempList.size() > 0) {
 
 				System.out.println("Here are some checked out items.");
 
@@ -180,7 +168,7 @@ public class Methods {
 					// prints item
 					if (found) {
 						itemToReturn = tempList.get(userChoice - 1);
-						itemToReturn.setStatus(false);
+						itemToReturn.setCheckedOut(false);
 						System.out.println("You have returned: " + itemToReturn.getTitle());
 					} else {
 						System.out.println(
@@ -193,10 +181,10 @@ public class Methods {
 				// returns item
 
 				tempList.clear(); // Clear list for next method
-
+				}
 			}
-		}
-	}
+		
+	
 
 	public static void displayTree(Scanner scnr, List<Media> library) {
 		// submenu selection
@@ -217,26 +205,32 @@ public class Methods {
 		case 1:
 			// display books
 			for (Media item : library) {
-				if (item instanceof Book) {
-					System.out.println(counter++ + ". " + item);
-					tempList.add(item);
+				if (item.isCheckedOut() == false) {
+					if (item instanceof Book) {
+						System.out.println(counter++ + ". " + item);
+						tempList.add(item);
+					}
 				}
 			}
 			break;
 		case 2:
 			// display DVD
 			for (Media item : library) {
-				if (item instanceof DVD) {
-					System.out.println(counter++ + ". " + item);
-					tempList.add(item);
+				if (item.isCheckedOut() == false) {
+					if (item instanceof DVD) {
+						System.out.println(counter++ + ". " + item);
+						tempList.add(item);
+					}
 				}
 			}
 			break;
 		default:
 			// display all
 			for (Media item : library) {
-				System.out.println(counter++ + ". " + item);
-				tempList.add(item);
+				if (item.isCheckedOut() == false) {
+					System.out.println(counter++ + ". " + item);
+					tempList.add(item);
+				}
 			}
 			break;
 		}
@@ -305,6 +299,8 @@ public class Methods {
 			}
 
 		}
+		
+		
 
 		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor());
 

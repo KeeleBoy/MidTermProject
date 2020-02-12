@@ -47,5 +47,25 @@ public class Main {
 				System.out.println("Thank you for visiting. Goodbye.");
 			}
 		} while (userContinue);
+	
+	
+	ArrayList<Book> books = new ArrayList<>();
+	ArrayList<DVD> dvds = new ArrayList<>();
+
+	for (Media media : mediaList) {
+
+		if (media instanceof Book) {
+
+			books.add((Book) media);
+
+		} else if (media instanceof DVD) {
+
+			dvds.add((DVD) media);
+		}
+
 	}
+	
+	DVDs.fileHelper.rewrite(dvds);
+	Books.fileHelper.rewrite(books);
+}
 }
