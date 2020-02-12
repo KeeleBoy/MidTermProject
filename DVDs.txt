@@ -1,5 +1,5 @@
-The Godfather	true	2/26/20	178	Francis Ford Coppola
-The Wizard of Oz	true	2/26/20	112	Victor Flemming
+The Godfather	false	3/1/20	178	Francis Ford Coppola
+The Wizard of Oz	false	3/1/20	112	Victor Flemming
 Citizen Kane	false	3/1/20	119	Orson Welles
 The Shawshank Redemption	false	3/1/20	142	Frank Darabont
 Pulp Fiction	false	3/1/20	178	Quentin Tarantino
