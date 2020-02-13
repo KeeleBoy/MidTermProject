@@ -3,7 +3,7 @@ package co.grandcircus;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public abstract class Media {
+public abstract class Media { // main class, doesn't do much, used for 3 subclasses
 
 
 

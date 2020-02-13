@@ -48,6 +48,7 @@ public class DisplayMethods {
 		int userChoice = Validator.getInt(scnr, 1, 4);
 		int counter = 1;
 		List<Media> tempList;
+		boolean contloop = true;
 		// switch case for selections
 
 		switch (userChoice) {
@@ -101,6 +102,7 @@ public class DisplayMethods {
 			}
 
 		}
+		while (contloop == true) {
 		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
 			System.out.println("\n\nWould you like to check out an item? Enter number (\"Q\" to Quit)");
@@ -109,19 +111,22 @@ public class DisplayMethods {
 				int index = Validator.getInt(scnr, 1, tempList.size());
 				ActionMethods.checkout(index, scnr, tempList);
 			} else {
-				// if not, assumes user wants to quit, clears scanner, and exits
-				scnr.nextLine();
+				String response = scnr.nextLine();
+				contloop = Validator.qForQuit(response);
 			}
 		} else {
 			// if there were no items found, print error message
 			System.out.println("No items found.");
+			contloop = false;
 		}
+	}
 	}
 
 	public static void searchTree(Scanner scnr, List<Media> library) {
 		// displays submenu
 		System.out.println("Search by [1] Author/Director, [2] Title");
 		int userChoice = Validator.getInt(scnr, 1, 2);
+		boolean contloop = true;
 		int counter = 1;
 		boolean exitCondition = false;
 		// setup temp list
@@ -171,6 +176,8 @@ public class DisplayMethods {
 			}
 
 		}
+		
+		while (contloop == true) {
 
 		// if there was at least one match
 		if (tempList.size() >= 1) {
@@ -182,14 +189,15 @@ public class DisplayMethods {
 				int index = Validator.getInt(scnr, 1, tempList.size());
 				ActionMethods.checkout(index, scnr, tempList);
 			} else {
-				// if not, assumes user wants to quit, clears scanner, and exits
-				scnr.nextLine();
+				String response = scnr.nextLine();
+				contloop = Validator.qForQuit(response);
 			}
 		} else {
 			// if there were no items found, print error message
 			System.out.println("No items found.");
+			contloop = false;
 		}
-
+		}
 	}
 
 	public static void sortTree(ArrayList<Media> library, Scanner scnr) {
@@ -301,12 +309,41 @@ public class DisplayMethods {
 
 	public static ArrayList<Media> sortByTitle(ArrayList<Media> library) {
 		// sorts dvds and books together by title
-		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a
+		ArrayList<Book> books = new ArrayList<>(); // creates lists to split the combined list into
+		ArrayList<DVD> dvds = new ArrayList<>();
+		ArrayList<AudioBook> audioBooks = new ArrayList<>();
+		for (Media media : library) {
+			if (media instanceof Book) { // splits the books into first list
+				books.add((Book) media);
+			} else if (media instanceof DVD) { // splits the dvds into the second list
+				dvds.add((DVD) media);
+			} else if (media instanceof AudioBook) {
+				audioBooks.add((AudioBook) media);
+			}
+		}
+
+		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a
+																										// comparator
+																										// for books
+		Collections.sort(books, compAuthors);// sorts books by comparator
+		
+		Comparator<AudioBook> compAudioAuthors = (AudioBook o1, AudioBook o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a
+		// comparator
+		// for books
+		Collections.sort(audioBooks, compAudioAuthors);
+		
+		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a
 																											// comparator
-																											// to sort
-																											// with
-		Collections.sort(library, compareByTitle); // sorts using the comparator
-		return library; // returns an updated list
+																											// for dvds
+		Collections.sort(dvds, compDirector); // sorts dvds by comparator
+
+		// Reconstruct into single library
+		library.clear();
+		library.addAll(books);
+		library.addAll(dvds);
+		library.addAll(audioBooks);
+
+		return library; // return list // returns an updated list
 	}
 
 	public static ArrayList<Media> sortByAuthor(ArrayList<Media> library) {

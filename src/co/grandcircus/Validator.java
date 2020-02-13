@@ -152,4 +152,11 @@ public class Validator {
 			}
 		} while (true);
 	}
+	
+	public static boolean qForQuit(String response) {
+		
+		if (response.toUpperCase().startsWith("Q")) {
+			return false;
+		} return true;
+	}
 }
