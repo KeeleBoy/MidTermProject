@@ -1,12 +1,13 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ActionMethods {
-	public static void checkout(int index, Scanner scnr, ArrayList<Media> checkoutList) {
+	public static void checkout(int index, Scanner scnr, List<Media> checkoutList) {
 		// decrement index to match 0,1,2 indexing
 		index--;
 		if (!checkoutList.get(index).isCheckedOut()) {
@@ -79,5 +80,39 @@ public class ActionMethods {
 			tempList.clear(); // Clear list for next method
 		}
 	}
+	
+	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
+		
+		String donationType = Validator.getString(scnr, "What would you like to donate? (DVD or Book)"); //asks what the person wants to donate
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy"); // sets up a starting date that will never be seen since Java doesn't like null
+		String dueDate = "3/1/20";
+		LocalDate setDueDate = LocalDate.parse(dueDate, format);
+		
+		if (donationType.equalsIgnoreCase("dvd")) { // if they donate dvds
+		String title = Validator.getString(scnr, "What is the name of the DVD?");// sets up the variables to create the dvd
+		String director = Validator.getString(scnr, "Who directed " + title + "?");
+		System.out.println("How long is the " + title + "?");
+		int runtime = Validator.getInt(scnr);
+		
+		DVD dvd1 = new DVD(title, false, setDueDate, runtime, director); // creates the dvd
+		library.add(dvd1); // adds the dvd to the list being returned
+			
+			return library;
+		} else if (donationType.equalsIgnoreCase("Book")) { // if they donate a book
+			
+			String title = Validator.getString(scnr, "What is the name of the book?"); // sets up the variables to create the book
+			String author = Validator.getString(scnr, "Who wrote " + title + "?");
+			
+			Book book1 = new Book(title, false, setDueDate, author); // creates the book
+			
+			library.add(book1);	// adds the book to the list being returned
+			
+			
+			return library;
+		} else { System.out.println("We do not return that kind of media."); // if they try to donate a fork (or literally anything except a book or dvd)
+		return library; // returns an unchanged library
+		}
+	}
+
 
 }
