@@ -44,8 +44,8 @@ public class DisplayMethods {
 	 */
 	public static void displayTree(Scanner scnr, List<Media> library) {
 		// submenu selection to display all items of the selected type
-		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display All");
-		int userChoice = Validator.getInt(scnr, 1, 3);
+		System.out.println("[1] Display Books, [2] Display DVDs, [3] Display AudioBooks, [4] Display All");
+		int userChoice = Validator.getInt(scnr, 1, 4);
 		int counter = 1;
 		List<Media> tempList;
 		// switch case for selections
@@ -58,6 +58,10 @@ public class DisplayMethods {
 		case 2:
 			// display all DVDs
 			tempList = filterByCriteria(library, "", "DVD");
+			break;
+		case 3:
+			// display all AudioBooks
+			tempList = filterByCriteria(library, "", "AUDIOBOOK");
 			break;
 		default:
 			tempList = filterByCriteria(library, "", "ALL");
@@ -170,13 +174,22 @@ public class DisplayMethods {
 						// Stores in temporary array of items
 						results.add(dvd);
 					}
-				} else {
+				} else if (item instanceof Book){
 					// if Book, explicit cast to Book type and searches using the getAuthor method
 					Book book = (Book) item;
 					if (book.getAuthor().toUpperCase().contains(searchKey)) {
 						// Stores in temporary array of items
 						results.add(book);
-					}
+					} 
+				
+				} else if (item instanceof AudioBook) {
+						// if AudioBook, explicit cast to AudioBook type and searches using the getAuthor method
+						AudioBook audioBook = (AudioBook) item;
+						if (audioBook.getAuthor().toUpperCase().contains(searchKey)) {
+							// Stores in temporary array of items
+							results.add(audioBook);
+						}
+				
 				}
 			}
 			break;
@@ -205,11 +218,19 @@ public class DisplayMethods {
 				}
 			}
 			break;
+		case "AUDIOBOOK":
+			// Searches for DVDs only and displays results
+			for (Media item : library) {
+				if (item instanceof AudioBook) {
+					results.add(item);
+				}
+			}
+			break;
 		case "ALL":
 			// Adds full library
 			results.addAll(library);
-		}
-		return results;
+		}return results;
+
 	}
 
 	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
@@ -283,6 +304,7 @@ public class DisplayMethods {
 		// (Director or Author)
 		ArrayList<Book> books = new ArrayList<>(); // creates lists to split the combined list into
 		ArrayList<DVD> dvds = new ArrayList<>();
+		ArrayList<AudioBook> audioBooks = new ArrayList<>();
 		for (Media media : library) {
 			if (media instanceof Book) { // splits the books into first list
 				books.add((Book) media);
@@ -294,7 +316,13 @@ public class DisplayMethods {
 		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor()); // creates a
 																										// comparator
 																										// for books
-		Collections.sort(books, compAuthors); // sorts books by comparator
+		Collections.sort(books, compAuthors);// sorts books by comparator
+		
+		Comparator<AudioBook> compAudioAuthors = (AudioBook o1, AudioBook o2) -> o1.getAuthor().compareTo(o2.getAuthor()); // creates a
+		// comparator
+		// for books
+		Collections.sort(audioBooks, compAudioAuthors);
+		
 		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector()); // creates a
 																											// comparator
 																											// for dvds
@@ -304,6 +332,7 @@ public class DisplayMethods {
 		library.clear();
 		library.addAll(books);
 		library.addAll(dvds);
+		library.addAll(audioBooks);
 
 		return library; // return list
 	}
