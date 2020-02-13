@@ -16,7 +16,7 @@ public class Main {
 		DisplayMethods mm = new DisplayMethods();
 		Scanner scnr = new Scanner(System.in);
 		boolean userContinue = true;
-		int userChoice;
+		int userChoice = 0;
 		ArrayList<Media> mediaList = new ArrayList<>();
 		mediaList = DVDs.mediaFromFiles();
 
@@ -27,7 +27,11 @@ public class Main {
 			System.out.println("\nEnter a selection:");
 
 			// Get user selection
-			userChoice = Validator.getInt(scnr, 1, 6);
+			if (scnr.hasNextInt()) {
+				userChoice = Validator.getInt(scnr, 1, 5);
+			} else if (scnr.nextLine().toUpperCase().startsWith("Q")){
+				userChoice = 6;
+			}
 			switch (userChoice) {
 			case 1:
 				// Display

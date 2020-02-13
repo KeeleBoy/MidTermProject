@@ -28,9 +28,9 @@ public class ActionMethods {
 				if (confirm) {
 					itemToCheckout.setDueDate(dueDate);
 					itemToCheckout.setCheckedOut(true);
+					// prints reminder message
+					System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
 				}
-				// prints reminder message
-				System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
 			}
 		} else {
 			System.out.println("That item is not available.");
@@ -113,13 +113,16 @@ public class ActionMethods {
 			library.add(dvd1); // adds the dvd to the list being returned			
 		} else if (donationType == 3) { // if they donate an audiobook
 
-			String title = Validator.getString(scnr, "What is the name of the book?\n"); // sets up the variables to
+			String title = Validator.getString(scnr, "What is the name of the audiobook?\n"); // sets up the variables to
 																						// create the book
 			String author = Validator.getString(scnr, "Who wrote " + title + "?\n");
+			
+			System.out.println("What is the runtime of " + title + "?\n");
+			int runtime = Validator.getInt(scnr);
 
-			Book book1 = new Book(title, false, setDueDate, author); // creates the book
+			AudioBook audiobook1 = new AudioBook(title, false, runtime, author); // creates the book
 
-			library.add(book1); // adds the book to the list being returned
+			library.add(audiobook1); // adds the book to the list being returned
 		} else {
 			System.out.println("We do not accept that type of media."); // if they try to donate a fork (or literally
 																		// anything except a book or dvd)
