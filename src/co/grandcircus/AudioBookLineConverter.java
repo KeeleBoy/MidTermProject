@@ -4,8 +4,8 @@ public class AudioBookLineConverter implements LineConverter<AudioBook> {
 
 	@Override
 	public String toLine(AudioBook object) {
-		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.getAuthor(), object.isCheckedOut(),
-				object.getRuntime());
+		return String.format("%s\t%s\t%s\t%s\t%s", object.getTitle(), object.isCheckedOut(),
+				object.getDueDate(), object.getRuntime(), object.getAuthor());
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class AudioBookLineConverter implements LineConverter<AudioBook> {
 
 		int runtime = Integer.parseInt(lines[3]); // pulls the 4th segment for the runtime portion of the DVD
 
-		return new AudioBook(runtime, author, status, title); // inputs all new variables into a new DVD
+		return new AudioBook(author, status, runtime, title); // inputs all new variables into a new DVD
 	}
 
 }
