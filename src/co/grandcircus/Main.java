@@ -5,13 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
-
-
 	/*
 	 * @Authors Sam Keim, James McDowell and Kyle Warchuck
 	 * 
 	 */
-	
 
 	public static void main(String[] args) {
 
@@ -19,7 +16,7 @@ public class Main {
 		DisplayMethods mm = new DisplayMethods();
 		Scanner scnr = new Scanner(System.in);
 		boolean userContinue = true;
-		int userChoice = 0;
+		int userChoice;
 		ArrayList<Media> mediaList = new ArrayList<>();
 		mediaList = DVDs.mediaFromFiles();
 
@@ -30,11 +27,7 @@ public class Main {
 			System.out.println("\nEnter a selection:");
 
 			// Get user selection
-			if (scnr.hasNextInt()) {
-				userChoice = Validator.getInt(scnr, 1, 5);
-			} else if (scnr.nextLine().toUpperCase().startsWith("Q")){
-				userChoice = 6;
-			}
+			userChoice = Validator.getInt(scnr, 1, 6);
 			switch (userChoice) {
 			case 1:
 				// Display
@@ -67,8 +60,6 @@ public class Main {
 		ArrayList<DVD> dvds = new ArrayList<>();
 		ArrayList<AudioBook> audioBooks = new ArrayList<>();
 
-		// separates media list by subclass so that the final lists can be written to
-		// the text files
 		for (Media media : mediaList) {
 
 			if (media instanceof Book) {

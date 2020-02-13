@@ -1,5 +1,8 @@
 package co.grandcircus;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class AudioBookLineConverter implements LineConverter<AudioBook> {
 
 	@Override
@@ -24,10 +27,14 @@ public class AudioBookLineConverter implements LineConverter<AudioBook> {
 		} else {
 			status = false; // otherwise status becomes false
 		}
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy");
+		String dueDate = lines[2];
+		LocalDate setDueDate = LocalDate.parse(dueDate, format);
 
 		int runtime = Integer.parseInt(lines[3]); // pulls the 4th segment for the runtime portion of the DVD
 
-		return new AudioBook(author, status, runtime, title); // inputs all new variables into a new DVD
-	}
 
+		return new AudioBook(title, status, setDueDate, runtime, author); // inputs all new variables into a new DVD
+		
+	}
 }

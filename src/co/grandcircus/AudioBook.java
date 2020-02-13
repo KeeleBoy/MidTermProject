@@ -31,6 +31,15 @@ public class AudioBook extends Media {
 		this.runtime = runtime;
 		this.dueDate = setDueDate;
 	}
+	
+	public AudioBook(String title, boolean checkedOut, LocalDate dueDate, int runtime,  String author) {
+		super();
+		this.title = title;
+		setAuthor(author);
+		this.checkedOut = checkedOut;
+		this.runtime = runtime;
+		this.dueDate = dueDate;
+	}
 
 	// to string
 
