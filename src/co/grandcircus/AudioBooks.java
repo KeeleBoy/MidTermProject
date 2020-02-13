@@ -7,6 +7,8 @@ public class AudioBooks {
 	static FileHelper<AudioBook> fileHelper = new FileHelper<>("AudioBooks.txt", (new AudioBookLineConverter()));
 
 	public static ArrayList<AudioBook> getAudioBookList() {
+		
+		
 
 		ArrayList<AudioBook> audioBooks = new ArrayList<>();
 
@@ -28,6 +30,11 @@ public class AudioBooks {
 		audioBooks.add(new AudioBook("Circe", false, 728, "Madeline Miller"));
 
 		return audioBooks;
+
+	}
+	
+	public static void audioBooksToFile(ArrayList<AudioBook> audioBooks) { // can be used to write an array to the text file
+		fileHelper.rewrite(audioBooks);
 
 	}
 

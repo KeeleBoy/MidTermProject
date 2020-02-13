@@ -50,6 +50,7 @@ public class DVDs {
 	public static ArrayList<Media> mediaFromFiles() { // writes an array from the text file
 		ArrayList<Media> media = (ArrayList) fileHelper.readAll();
 		media.addAll(Books.fileHelper.readAll()); // pulls the book text file as well so there is only one array
+		media.addAll(AudioBooks.fileHelper.readAll());
 		return media;
 	}
 

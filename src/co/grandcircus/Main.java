@@ -54,6 +54,7 @@ public class Main {
 
 		ArrayList<Book> books = new ArrayList<>();
 		ArrayList<DVD> dvds = new ArrayList<>();
+		ArrayList<AudioBook> audioBooks = new ArrayList<>();
 
 		for (Media media : mediaList) {
 
@@ -69,11 +70,13 @@ public class Main {
 		}
 
 		
-		
+//		AudioBooks.audioBooksToFile(AudioBooks.getAudioBookList());
 //		DVDs.DVDsToFile(DVDs.getDVDList());
 //		Books.BooksToFile(Books.getBookList());
 //		DVDs.mediaFromFiles();
+		
 		DVDs.fileHelper.rewrite(dvds);
 		Books.fileHelper.rewrite(books);
+		AudioBooks.fileHelper.rewrite(audioBooks);
 	}
 }
