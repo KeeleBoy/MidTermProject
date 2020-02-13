@@ -47,7 +47,7 @@ public class Main {
 				break;
 			case 5:
 				// donate
-				DisplayMethods.donation(scnr, mediaList);
+				ActionMethods.donation(scnr, mediaList);
 				break;
 			default:
 				// Exit

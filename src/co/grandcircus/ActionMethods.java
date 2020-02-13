@@ -80,39 +80,51 @@ public class ActionMethods {
 			tempList.clear(); // Clear list for next method
 		}
 	}
-	
-	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
-		
-		String donationType = Validator.getString(scnr, "What would you like to donate? (DVD or Book)"); //asks what the person wants to donate
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy"); // sets up a starting date that will never be seen since Java doesn't like null
-		String dueDate = "3/1/20";
-		LocalDate setDueDate = LocalDate.parse(dueDate, format);
-		
-		if (donationType.equalsIgnoreCase("dvd")) { // if they donate dvds
-		String title = Validator.getString(scnr, "What is the name of the DVD?");// sets up the variables to create the dvd
-		String director = Validator.getString(scnr, "Who directed " + title + "?");
-		System.out.println("How long is the " + title + "?");
-		int runtime = Validator.getInt(scnr);
-		
-		DVD dvd1 = new DVD(title, false, setDueDate, runtime, director); // creates the dvd
-		library.add(dvd1); // adds the dvd to the list being returned
-			
-			return library;
-		} else if (donationType.equalsIgnoreCase("Book")) { // if they donate a book
-			
-			String title = Validator.getString(scnr, "What is the name of the book?"); // sets up the variables to create the book
-			String author = Validator.getString(scnr, "Who wrote " + title + "?");
-			
-			Book book1 = new Book(title, false, setDueDate, author); // creates the book
-			
-			library.add(book1);	// adds the book to the list being returned
-			
-			
-			return library;
-		} else { System.out.println("We do not return that kind of media."); // if they try to donate a fork (or literally anything except a book or dvd)
-		return library; // returns an unchanged library
-		}
-	}
 
+	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
+
+		System.out.println("What would you like to donate? [1] Book [2] DVD [3] Audiobook");
+		int donationType = Validator.getInt(scnr, 1, 3); // asks what the person wants to donate
+
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy"); // sets up a starting date that will never be
+																			// seen since Java doesn't like null
+		String dueDate = "3/1/20"; // Default date
+		LocalDate setDueDate = LocalDate.parse(dueDate, format); // Converts to LocalDate
+
+		if (donationType == 1) { // if they donate a book
+
+			String title = Validator.getString(scnr, "What is the name of the book?\n"); // sets up the variables to
+																						// create the book
+			String author = Validator.getString(scnr, "Who wrote " + title + "?\n");
+
+			Book book1 = new Book(title, false, setDueDate, author); // creates the book
+
+			library.add(book1); // adds the book to the list being returned
+
+			return library;
+		} else if (donationType == 2) { // if they donate dvds
+			String title = Validator.getString(scnr, "What is the name of the DVD?\n");// sets up the variables to create
+																						// the dvd
+			String director = Validator.getString(scnr, "Who directed " + title + "?\n");
+			System.out.println("How long is the " + title + "?\n");
+			int runtime = Validator.getInt(scnr);
+
+			DVD dvd1 = new DVD(title, false, setDueDate, runtime, director); // creates the dvd
+			library.add(dvd1); // adds the dvd to the list being returned			
+		} else if (donationType == 3) { // if they donate an audiobook
+
+			String title = Validator.getString(scnr, "What is the name of the book?\n"); // sets up the variables to
+																						// create the book
+			String author = Validator.getString(scnr, "Who wrote " + title + "?\n");
+
+			Book book1 = new Book(title, false, setDueDate, author); // creates the book
+
+			library.add(book1); // adds the book to the list being returned
+		} else {
+			System.out.println("We do not accept that type of media."); // if they try to donate a fork (or literally
+																		// anything except a book or dvd)
+		}
+		return library;
+	}
 
 }

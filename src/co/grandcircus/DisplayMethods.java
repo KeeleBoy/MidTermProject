@@ -212,55 +212,6 @@ public class DisplayMethods {
 		return results;
 	}
 
-	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
-
-		String donationType = Validator.getString(scnr, "What would you like to donate? (DVD, Book or AudioBook)");
-		// asks what the person wants to donate
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy"); // sets up a starting date that will never be
-																			// seen since Java doesn't like null
-		String dueDate = "3/1/20";
-		LocalDate setDueDate = LocalDate.parse(dueDate, format);
-
-		if (donationType.equalsIgnoreCase("dvd")) { // if they donate dvds
-			String title = Validator.getString(scnr, "What is the name of the DVD?");// sets up the variables to create
-																						// the dvd
-			String director = Validator.getString(scnr, "Who directed " + title + "?");
-			System.out.println("How long is the " + title + "?");
-			int runtime = Validator.getInt(scnr);
-
-			DVD dvd1 = new DVD(title, false, setDueDate, runtime, director); // creates the dvd
-			library.add(dvd1); // adds the dvd to the list being returned
-
-			return library;
-		} else if (donationType.equalsIgnoreCase("Book")) { // if they donate a book
-
-			String title = Validator.getString(scnr, "What is the name of the book?"); // sets up the variables to
-																						// create the book
-			String author = Validator.getString(scnr, "Who wrote " + title + "?");
-
-			Book book1 = new Book(title, false, setDueDate, author); // creates the book
-
-			library.add(book1); // adds the book to the list being returned
-
-			return library;
-		} else if (donationType.equalsIgnoreCase("AudioBook")) {
-			String title = Validator.getString(scnr, "What is the name of the AudioBook?");// sets up the variables to
-																							// create
-			// the audioBook
-			String author = Validator.getString(scnr, "Who wrote " + title + "?");
-			System.out.println("How long is the " + title + "?");
-			int runtime = Validator.getInt(scnr);
-
-			AudioBook audioBook1 = new AudioBook(title, false, runtime, author); // creates the audioBook
-			library.add(audioBook1); // adds the audiBook to the list being returned
-
-			return library;
-		} else {
-			System.out.println("We do not return that kind of media."); // if they try to donate a fork (or literally
-																		// anything except a book or dvd)
-			return library; // returns an unchanged library
-		}
-	}
 	/*
 	 * 
 	 * Next Two Methods - Sort Methods that organize the library by Author or by
