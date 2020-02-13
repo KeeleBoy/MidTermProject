@@ -7,13 +7,13 @@ One Day in December	false	3/1/20	627	Josie Silver
 The Girl Who Drank the Moon	false	3/1/20	571	Kelly Barnhill
 Circe	false	3/1/20	728	Madeline Miller
 The Radical King	false	3/1/20	673	Martin Luther King, Jr
-<<<<<<< Updated upstream
-The Ravenmaster	false	3/1/20	399	Christopher Skaife
-=======
+Marcus Vega Doesn’t Speak Spanish	false	3/1/20	315	Pablo Cartaya
+Not That Bad: Dispatches from Rape Culture	false	3/1/20	521	Roxane Gay
+Convenience Store Woman	false	3/1/20	201	Sayaka Murata
+Barracoon: The Story of the Last	false	3/1/20	229	Zora Neale
 Marcus Vega Doesn’t Speak Spanish	false	3/1/20	315	Pablo Cartaya
 Not That Bad: Dispatches from Rape Culture	false	3/1/20	521	Roxane Gay
 Convenience Store Woman	false	3/1/20	201	Sayaka Murata
 There, there	false	3/1/20	480	Tommy Orange
 Barracoon: The Story of the Last	false	3/1/20	229	Zora Neale
 bob	false	3/1/20	13	likes toast
->>>>>>> Stashed changes

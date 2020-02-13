@@ -29,7 +29,7 @@ public class DisplayMethods {
 		System.out.printf("%-40s%-20s%42s\n", "|", "[3]   SORT/DISPLAY", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "[4]   RETURN ITEM", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "[5]   DONATE ITEM", "|");
-		System.out.printf("%-40s%-20s%42s\n", "|", "[6]   EXIT", "|");
+		System.out.printf("%-40s%-20s%42s\n", "|", "[Q]   EXIT", "|");
 		System.out.printf("%-40s%-20s%42s\n", "|", "", "|");
 		System.out.println(
 				"+====================================================================================================+");
@@ -69,14 +69,43 @@ public class DisplayMethods {
 			// display all
 			break;
 		}
-		// print list of results
+
+		// print list of results, prints header only if found
+		// Sets counters to 0, when the first item is encountered, it prints the header and then prints the applicable items
+		// Relies on the incoming list to be sorted by category in order of BOOKS / DVDS / AUDIOBOOKS
+		int bookCounter = 0;
+		int dvdCounter = 0;
+		int audioBookCounter = 0;
+
 		for (Media m : tempList) {
-			System.out.println(counter++ + ". " + m);
+			if (m instanceof Book) {
+				bookCounter++;
+				if (bookCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|        BOOKS       |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			} else if (m instanceof DVD) {
+				dvdCounter++;
+				if (dvdCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|        DVDS        |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			} else if (m instanceof AudioBook) {
+				audioBookCounter++;
+				if (audioBookCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|     AUDIOBOOKS     |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			}
+
 		}
 		while (contloop == true) {
 		if (tempList.size() >= 1) {
 			// asks user if they want to check out an item
-			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+			System.out.println("\n\nWould you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
@@ -99,6 +128,7 @@ public class DisplayMethods {
 		int userChoice = Validator.getInt(scnr, 1, 2);
 		boolean contloop = true;
 		int counter = 1;
+		boolean exitCondition = false;
 		// setup temp list
 		List<Media> tempList;
 		// switch case for which submenu
@@ -117,16 +147,43 @@ public class DisplayMethods {
 		}
 
 		// print list of results
+		int bookCounter = 0;
+		int dvdCounter = 0;
+		int audioBookCounter = 0;
+
 		for (Media m : tempList) {
-			System.out.println(counter++ + ". " + m);
+			if (m instanceof Book) {
+				bookCounter++;
+				if (bookCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|        BOOKS       |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			} else if (m instanceof DVD) {
+				dvdCounter++;
+				if (dvdCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|        DVDS        |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			} else if (m instanceof AudioBook) {
+				audioBookCounter++;
+				if (audioBookCounter == 1) {
+					System.out.printf("\n%-40s%-20s%40s\n", "+======================================",
+							"|     AUDIOBOOKS     |", "======================================+");
+				}
+				System.out.println(counter++ + ". " + m);
+			}
+
 		}
 		
 		while (contloop == true) {
 
 		// if there was at least one match
 		if (tempList.size() >= 1) {
+
 			// asks user if they want to check out an item
-			System.out.println("Would you like to check out an item? Enter number (\"Q\" to Quit)");
+			System.out.println("\n\nWould you like to check out an item? Enter number (\"Q\" to Quit)");
 			// If the selection was an integer, proceeds to checkout
 			if (scnr.hasNextInt()) {
 				int index = Validator.getInt(scnr, 1, tempList.size());
@@ -182,22 +239,23 @@ public class DisplayMethods {
 						// Stores in temporary array of items
 						results.add(dvd);
 					}
-				} else if (item instanceof Book){
+				} else if (item instanceof Book) {
 					// if Book, explicit cast to Book type and searches using the getAuthor method
 					Book book = (Book) item;
 					if (book.getAuthor().toUpperCase().contains(searchKey)) {
 						// Stores in temporary array of items
 						results.add(book);
-					} 
-				
+					}
+
 				} else if (item instanceof AudioBook) {
-						// if AudioBook, explicit cast to AudioBook type and searches using the getAuthor method
-						AudioBook audioBook = (AudioBook) item;
-						if (audioBook.getAuthor().toUpperCase().contains(searchKey)) {
-							// Stores in temporary array of items
-							results.add(audioBook);
-						}
-				
+					// if AudioBook, explicit cast to AudioBook type and searches using the
+					// getAuthor method
+					AudioBook audioBook = (AudioBook) item;
+					if (audioBook.getAuthor().toUpperCase().contains(searchKey)) {
+						// Stores in temporary array of items
+						results.add(audioBook);
+					}
+
 				}
 			}
 			break;
@@ -237,7 +295,8 @@ public class DisplayMethods {
 		case "ALL":
 			// Adds full library
 			results.addAll(library);
-		}return results;
+		}
+		return results;
 
 	}
 
@@ -307,12 +366,13 @@ public class DisplayMethods {
 																										// comparator
 																										// for books
 		Collections.sort(books, compAuthors);// sorts books by comparator
-		
-		Comparator<AudioBook> compAudioAuthors = (AudioBook o1, AudioBook o2) -> o1.getAuthor().compareTo(o2.getAuthor()); // creates a
+
+		Comparator<AudioBook> compAudioAuthors = (AudioBook o1, AudioBook o2) -> o1.getAuthor()
+				.compareTo(o2.getAuthor()); // creates a
 		// comparator
 		// for books
 		Collections.sort(audioBooks, compAudioAuthors);
-		
+
 		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector()); // creates a
 																											// comparator
 																											// for dvds

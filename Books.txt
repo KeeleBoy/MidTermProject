@@ -1,3 +1,4 @@
+Brave New World	true	2/27/20	Aldous Huxley
 A Portrait of the Artist as a Young Man	false	3/1/20	James Joyce
 Brave New World	false	3/1/20	Aldous Huxley
 Catch-22	false	3/1/20	Joseph Heller

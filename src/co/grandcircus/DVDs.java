@@ -36,8 +36,6 @@ public class DVDs {
 		dvds.add(new DVD("On the Waterfront", false, setDueDate, 108, "Elia Kazan"));
 		dvds.add(new DVD("Forrest Gump", false, setDueDate, 142, "Robert Zemeckis"));
 
-
-		
 		return dvds;
 
 	}
@@ -48,8 +46,8 @@ public class DVDs {
 	}
 
 	public static ArrayList<Media> mediaFromFiles() { // writes an array from the text file
-		ArrayList<Media> media = (ArrayList) fileHelper.readAll();
-		media.addAll(Books.fileHelper.readAll()); // pulls the book text file as well so there is only one array
+		ArrayList<Media> media = (ArrayList) Books.fileHelper.readAll();
+		media.addAll(DVDs.fileHelper.readAll()); // pulls the book text file as well so there is only one array
 		media.addAll(AudioBooks.fileHelper.readAll());
 		return media;
 	}
