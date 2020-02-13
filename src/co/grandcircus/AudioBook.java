@@ -41,7 +41,7 @@ public class AudioBook extends Media {
 			return String.format("%-60s%35s", audioBookString, "Unavailable until " + getDueDate());
 
 		} else {
-			return String.format("%-60s%35s", "\"" + title + "\" by " + audioBookString, "Available");
+			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(),  "Available");
 		}
 
 	}
