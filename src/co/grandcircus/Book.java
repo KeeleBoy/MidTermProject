@@ -32,6 +32,7 @@ public class Book extends Media {
 
 	}
 
+
 	public String getAuthor() {
 		String returnAuthor = "";
 		for (String a : author) {
@@ -40,6 +41,8 @@ public class Book extends Media {
 		returnAuthor = returnAuthor.substring(0, returnAuthor.length() - 2);
 		return returnAuthor;
 	}
+
+
 
 	public void setAuthor(String author) {
 		List<String> authorList = Arrays.asList(author.split(", "));

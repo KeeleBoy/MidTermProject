@@ -1,6 +1,7 @@
 package co.grandcircus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,7 +14,7 @@ public class DisplayMethods {
 	// Prints menu
 	public void printMenu() {
 
-		System.out.printf("%-40s%-20s%40s\n", "", "+--------------------+", "");
+		System.out.printf("%-40s%-20s%40s\n", "", "+--------------------+", ""); // this is a menu, as indicated by the method name
 		System.out.printf("%-40s%-20s%40s\n", "", "|   UNTOLD STORIES   |", "");
 		System.out.printf("%-40s%-20s%40s\n", "+======================================", "|    LIBRARY MENU    |",
 				"======================================+");
@@ -49,6 +50,7 @@ public class DisplayMethods {
 	
 	public static ArrayList<Media> filterByAuthor(String name, List<Media> library) {
 		ArrayList<Media> results = new ArrayList<>();
+		name = name.toUpperCase();
 		for (Media item : library) {
 			// Loops through media items
 			if (item instanceof DVD) {
@@ -212,39 +214,72 @@ public class DisplayMethods {
 			String title = scnr.nextLine();
 			DisplayMethods.displayByTitle(title, library, scnr);
 		}
+		
+	}
+	
+	public static ArrayList<Media> donation(Scanner scnr, ArrayList<Media> library) {
+		
+		String donationType = Validator.getString(scnr, "What would you like to donate? (DVD or Book)"); //asks what the person wants to donate
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/yy"); // sets up a starting date that will never be seen since Java doesn't like null
+		String dueDate = "3/1/20";
+		LocalDate setDueDate = LocalDate.parse(dueDate, format);
+		
+		if (donationType.equalsIgnoreCase("dvd")) { // if they donate dvds
+		String title = Validator.getString(scnr, "What is the name of the DVD?");// sets up the variables to create the dvd
+		String director = Validator.getString(scnr, "Who directed " + title + "?");
+		System.out.println("How long is the " + title + "?");
+		int runtime = Validator.getInt(scnr);
+		
+		DVD dvd1 = new DVD(title, false, setDueDate, runtime, director); // creates the dvd
+		library.add(dvd1); // adds the dvd to the list being returned
+			
+			return library;
+		} else if (donationType.equalsIgnoreCase("Book")) { // if they donate a book
+			
+			String title = Validator.getString(scnr, "What is the name of the book?"); // sets up the variables to create the book
+			String author = Validator.getString(scnr, "Who wrote " + title + "?");
+			
+			Book book1 = new Book(title, false, setDueDate, author); // creates the book
+			
+			library.add(book1);	// adds the book to the list being returned
+			
+			
+			return library;
+		} else { System.out.println("We do not return that kind of media."); // if they try to donate a fork (or literally anything except a book or dvd)
+		return library; // returns an unchanged library
+		}
 	}
 
-	public static ArrayList<Media> sortByTitle(List<Media> library) {
-		// Sort alphabetically by title, mixes dvds and books together
-		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle());
-		Collections.sort(library, compareByTitle);
-		return (ArrayList<Media>) library;
+	public static ArrayList<Media> sortByTitle(ArrayList<Media> library) {
+		// sorts dvds and books together by title
+		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a comparator to sort with
+		Collections.sort(library, compareByTitle); // sorts using the comparator
+		return  library; // returns an updated list
 	}
 
-	public static ArrayList<Media> sortByAuthor(List<Media> library) {
-		// DVDs and books
-		// Separates library list into books and into dvds
-		ArrayList<Book> books = new ArrayList<>();
+	public static ArrayList<Media> sortByAuthor(ArrayList<Media> library) {
+		// Splits into DVD and Book lists, then sorts by appropriate call method (Director or Author)
+		ArrayList<Book> books = new ArrayList<>(); // creates lists to split the combined list into
 		ArrayList<DVD> dvds = new ArrayList<>();
 		for (Media media : library) {
-			if (media instanceof Book) {
+			if (media instanceof Book) { // splits the books into first list
 				books.add((Book) media);
-			} else if (media instanceof DVD) {
+			} else if (media instanceof DVD) { // splits the dvds into the second list
 				dvds.add((DVD) media);
 			}
 		}
 
-		// Create comparators and sort books and DVDs
-		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor());
-		Collections.sort(books, compAuthors);
-		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector());
-		Collections.sort(dvds, compDirector);
+		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor()); // creates a comparator for books
+		Collections.sort(books, compAuthors); // sorts books by comparator
+		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector()); // creates a comparator for dvds
+		Collections.sort(dvds, compDirector); // sorts dvds by comparator
 
 		// Reconstruct into single library
 		library.clear();
 		library.addAll(books);
 		library.addAll(dvds);
 
-		return (ArrayList<Media>) library;
+
+		return  library; // return list 
 	}
 }
