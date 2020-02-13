@@ -6,13 +6,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AudioBook extends Media {
+	
+	// variables 
 
 	int runtime;
 	List<String> author;
 
+	// no argument constructor
+	
 	public AudioBook() {
 
 	}
+	
+	// normal constructor
 
 	public AudioBook(String title, boolean checkedOut, int runtime,  String author) {
 		super();
@@ -26,6 +32,7 @@ public class AudioBook extends Media {
 		this.dueDate = setDueDate;
 	}
 
+	// to string
 
 	@Override
 	public String toString() {
@@ -38,6 +45,8 @@ public class AudioBook extends Media {
 		}
 
 	}
+	
+	// getters and setters below
 
 	public int getRuntime() {
 		return runtime;
