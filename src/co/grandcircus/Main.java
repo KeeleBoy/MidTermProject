@@ -20,14 +20,14 @@ public class Main {
 		ArrayList<Media> mediaList = new ArrayList<>();
 		mediaList = DVDs.mediaFromFiles();
 
-		// Do-while loop, runs through once and loops until user chooses to exit
+		 // Do-while loop, runs through once and loops until user chooses to exit
 		do {
 			// Starts by printing menu
 			mm.printMenu();
 			System.out.println("\nEnter a selection:");
 
 			// Get user selection
-			userChoice = Validator.getInt(scnr, 1, 5);
+			userChoice = Validator.getInt(scnr, 1, 6);
 			switch (userChoice) {
 			case 1:
 				// Display
@@ -44,6 +44,10 @@ public class Main {
 			case 4:
 				// Return
 				ActionMethods.returnItem(scnr, mediaList);
+				break;
+			case 5:
+				// donate
+				DisplayMethods.donation(scnr, mediaList);
 				break;
 			default:
 				// Exit
@@ -65,8 +69,12 @@ public class Main {
 			} else if (media instanceof DVD) {
 
 				dvds.add((DVD) media);
-			}
+				
+			} else if (media instanceof AudioBook) {
 
+				audioBooks.add((AudioBook) media);
+
+		}
 		}
 
 		
