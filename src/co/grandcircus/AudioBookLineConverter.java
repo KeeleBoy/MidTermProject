@@ -3,7 +3,7 @@ package co.grandcircus;
 public class AudioBookLineConverter implements LineConverter<AudioBook> {
 
 	@Override
-	public String toLine(AudioBook object) {
+	public String toLine(AudioBook object) { // takes audiobook as an object and converts it to string for the text files
 		return String.format("%s\t%s\t%s\t%s\t%s", object.getTitle(), object.isCheckedOut(),
 				object.getDueDate(), object.getRuntime(), object.getAuthor());
 	}

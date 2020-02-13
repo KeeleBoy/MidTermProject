@@ -28,9 +28,10 @@ public class ActionMethods {
 				if (confirm) {
 					itemToCheckout.setDueDate(dueDate);
 					itemToCheckout.setCheckedOut(true);
+					System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
 				}
 				// prints reminder message
-				System.out.printf("Please return %s by %s\n\n", itemToCheckout.getTitle(), itemToCheckout.getDueDate());
+				
 			}
 		} else {
 			System.out.println("That item is not available.");

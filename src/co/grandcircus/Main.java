@@ -5,10 +5,13 @@ import java.util.Scanner;
 
 public class Main {
 
+
+
 	/*
 	 * @Authors Sam Keim, James McDowell and Kyle Warchuck
 	 * 
 	 */
+	
 
 	public static void main(String[] args) {
 
@@ -20,7 +23,7 @@ public class Main {
 		ArrayList<Media> mediaList = new ArrayList<>();
 		mediaList = DVDs.mediaFromFiles();
 
-		 // Do-while loop, runs through once and loops until user chooses to exit
+		// Do-while loop, runs through once and loops until user chooses to exit
 		do {
 			// Starts by printing menu
 			mm.printMenu();
@@ -60,6 +63,8 @@ public class Main {
 		ArrayList<DVD> dvds = new ArrayList<>();
 		ArrayList<AudioBook> audioBooks = new ArrayList<>();
 
+		// separates media list by subclass so that the final lists can be written to
+		// the text files
 		for (Media media : mediaList) {
 
 			if (media instanceof Book) {
@@ -69,20 +74,19 @@ public class Main {
 			} else if (media instanceof DVD) {
 
 				dvds.add((DVD) media);
-				
+
 			} else if (media instanceof AudioBook) {
 
 				audioBooks.add((AudioBook) media);
 
-		}
+			}
 		}
 
-		
 //		AudioBooks.audioBooksToFile(AudioBooks.getAudioBookList());
 //		DVDs.DVDsToFile(DVDs.getDVDList());
 //		Books.BooksToFile(Books.getBookList());
 //		DVDs.mediaFromFiles();
-		
+
 		DVDs.fileHelper.rewrite(dvds);
 		Books.fileHelper.rewrite(books);
 		AudioBooks.fileHelper.rewrite(audioBooks);

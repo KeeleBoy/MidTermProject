@@ -8,11 +8,11 @@ public class Book extends Media {
 
 	List<String> author;
 
-	public Book() {
+	public Book() { // no args constructor
 
 	}
 
-	public Book(String title, boolean checkedOut, LocalDate dueDate, String author) {
+	public Book(String title, boolean checkedOut, LocalDate dueDate, String author) { //constructor
 		super();
 		this.title = title;
 		this.checkedOut = checkedOut;
@@ -21,7 +21,7 @@ public class Book extends Media {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() { // toString, 2 options for whether or not the book is checked out
 		String bookString = "\"" + title + "\" by " + getAuthor();
 		if (checkedOut) {
 			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
@@ -33,7 +33,7 @@ public class Book extends Media {
 	}
 
 
-	public String getAuthor() {
+	public String getAuthor() { //gets author from list 
 		String returnAuthor = "";
 		for (String a : author) {
 			returnAuthor += a + ", ";
@@ -44,7 +44,7 @@ public class Book extends Media {
 
 
 
-	public void setAuthor(String author) {
+	public void setAuthor(String author) {// sets author as a list so multiple authors can be held
 		List<String> authorList = Arrays.asList(author.split(", "));
 		this.author = authorList;
 	}
