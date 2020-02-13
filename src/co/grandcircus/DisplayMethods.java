@@ -109,9 +109,6 @@ public class DisplayMethods {
 		int counter = 1; // Counter for items to be displayed
 		for (Media m : library) {
 			// Loops through looking for match
-
-			// Heres an attempt to only print books that are not checked out
-
 			if (m.getTitle().toUpperCase().contains(title)) {
 				System.out.println(counter++ + ". " + m);
 				// Adds item to tempList
@@ -204,13 +201,13 @@ public class DisplayMethods {
 		// switch case for which submenu
 		switch (userChoice) {
 		case 1:
-			// author director
+			// If user selected author/director
 			System.out.println("Enter author/director name:");
 			String name = scnr.nextLine();
 			DisplayMethods.displayByAuthor(name, library, scnr);
 			break;
 		default:
-			// title
+			// If user selected title
 			System.out.println("Enter title:");
 			String title = scnr.nextLine();
 			DisplayMethods.displayByTitle(title, library, scnr);
@@ -218,43 +215,32 @@ public class DisplayMethods {
 	}
 
 	public static ArrayList<Media> sortByTitle(List<Media> library) {
-
+		// Sort alphabetically by title, mixes dvds and books together
 		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle());
-
 		Collections.sort(library, compareByTitle);
-
 		return (ArrayList<Media>) library;
 	}
 
 	public static ArrayList<Media> sortByAuthor(List<Media> library) {
-
+		// DVDs and books
+		// Separates library list into books and into dvds
 		ArrayList<Book> books = new ArrayList<>();
 		ArrayList<DVD> dvds = new ArrayList<>();
-
 		for (Media media : library) {
-
 			if (media instanceof Book) {
-
 				books.add((Book) media);
-
 			} else if (media instanceof DVD) {
-
 				dvds.add((DVD) media);
 			}
-
 		}
 
+		// Create comparators and sort books and DVDs
 		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor());
-
 		Collections.sort(books, compAuthors);
-
 		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector());
-
 		Collections.sort(dvds, compDirector);
 
-//		DVDs.fileHelper.rewrite(dvds);
-//		Books.fileHelper.rewrite(books);
-
+		// Reconstruct into single library
 		library.clear();
 		library.addAll(books);
 		library.addAll(dvds);
