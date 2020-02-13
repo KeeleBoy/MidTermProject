@@ -6,13 +6,13 @@ import java.time.format.DateTimeFormatter;
 public class BookLineConverter implements LineConverter<Book> {
 
 	@Override
-	public String toLine(Book object) { 
+	public String toLine(Book object) { // takes book object and sets it to string to send to text file
 		return String.format("%s\t%s\t%s\t%s", object.getTitle(), object.isCheckedOut(), object.getDueDate(),
 				object.getAuthor());
 	}
 
 	@Override
-	public Book fromLine(String line) { // see DVD from line in DVDLineConversion same stuff, different variables
+	public Book fromLine(String line) { // see DVD fromLine in DVDLineConversion same stuff, different variables
 
 		line.split("\t");
 

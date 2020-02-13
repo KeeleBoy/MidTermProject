@@ -56,7 +56,7 @@ public class AudioBook extends Media {
 		this.runtime = runtime;
 	}
 
-	public String getAuthor() {
+	public String getAuthor() { // gets Authors from list to string for easier management
 		String returnAuthor = "";
 		for (String a : author) {
 			returnAuthor += a + ", ";
@@ -67,7 +67,7 @@ public class AudioBook extends Media {
 
 
 
-	public void setAuthor(String author) {
+	public void setAuthor(String author) { //sets author from List
 		List<String> authorList = Arrays.asList(author.split(", "));
 		this.author = authorList;
 	}
