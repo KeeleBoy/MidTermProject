@@ -219,7 +219,7 @@ public class DisplayMethods {
 			}
 			break;
 		case "AUDIOBOOK":
-			// Searches for DVDs only and displays results
+			// Searches for AudioBook only and displays results
 			for (Media item : library) {
 				if (item instanceof AudioBook) {
 					results.add(item);
@@ -310,6 +310,8 @@ public class DisplayMethods {
 				books.add((Book) media);
 			} else if (media instanceof DVD) { // splits the dvds into the second list
 				dvds.add((DVD) media);
+			} else if (media instanceof AudioBook) {
+				audioBooks.add((AudioBook) media);
 			}
 		}
 

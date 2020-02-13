@@ -1,15 +1,15 @@
-false	false	3/1/20	92	Everyone’s a Aliebn When UR a Aliebn Too
-false	false	3/1/20	183	The Poet X
-false	false	3/1/20	201	Convenience Store Woman
-false	false	3/1/20	229	Barracoon: The Story of the Last
-false	false	3/1/20	315	Marcus Vega Doesn’t Speak Spanish
-false	false	3/1/20	399	The Ravenmaster
-false	false	3/1/20	477	Sadie
-false	false	3/1/20	480	There, there
-false	false	3/1/20	521	Not That Bad: Dispatches from Rape Culture
-false	false	3/1/20	565	An Absolutely Remarkable Thing
-false	false	3/1/20	571	The Girl Who Drank the Moon
-false	false	3/1/20	627	One Day in December
-false	false	3/1/20	650	All the Ever Afters: The Untold Story of Cinderella’s Stepmother
-false	false	3/1/20	673	The Radical King
-false	false	3/1/20	728	Circe
+An Absolutely Remarkable Thing	false	3/1/20	565	Hank Green
+Barracoon: The Story of the Last	false	3/1/20	229	Zora Neale
+Circe	false	3/1/20	728	Madeline Miller
+Convenience Store Woman	false	3/1/20	201	Sayaka Murata
+Everyone’s a Aliebn When UR a Aliebn Too	false	3/1/20	92	Jomny Sun
+Marcus Vega Doesn’t Speak Spanish	false	3/1/20	315	Pablo Cartaya
+Not That Bad: Dispatches from Rape Culture	false	3/1/20	521	Roxane Gay
+One Day in December	false	3/1/20	627	Josie Silver
+Sadie	false	3/1/20	477	Courtney Summers
+The Girl Who Drank the Moon	false	3/1/20	571	Kelly Barnhill
+The Poet X	false	3/1/20	183	Elizabeth Acevedo
+The Radical King	false	3/1/20	673	Martin Luther King, Jr
+The Ravenmaster	false	3/1/20	399	Christopher Skaife
+There, there	false	3/1/20	480	Tommy Orange
+bob	false	3/1/20	13	likes toast
