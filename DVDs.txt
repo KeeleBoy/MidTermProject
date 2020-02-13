@@ -1,0 +1,19 @@
+2001: A Space Odyssey	false	3/1/20	164	Stanley Kubrick
+Casablanca	false	3/1/20	102	Michael Cuutiz
+Citizen Kane	false	3/1/20	119	Orson Welles
+E.T. The Extra Terrestrial	false	3/1/20	121	Steven Speilberg
+Forrest Gump	false	3/1/20	142	Robert Zemeckis
+Gone with the Wind	false	3/1/20	238	Sam Wood
+Lawrence of Arabia	false	3/1/20	228	David Lean
+On the Waterfront	false	3/1/20	108	Elia Kazan
+One Flew Over the Cuckoos Nest	false	3/1/20	133	Milos Forman
+Psycho	false	3/1/20	109	Alfred Hitchcock
+Pulp Fiction	false	3/1/20	178	Quentin Tarantino
+Raging Bill	false	3/1/20	129	Martin Scorsese
+Schindler's List	false	3/1/20	197	Steven Speilberg
+The Godfather	false	3/1/20	178	Francis Ford Coppola
+The Godfather: Pt II	false	3/1/20	202	Francis Ford Coppola
+The Shawshank Redemption	false	3/1/20	142	Frank Darabont
+The Wizard of Oz	false	3/1/20	112	Victor Flemming
+Vertigo	false	3/1/20	128	Alfred Hitchcock
+

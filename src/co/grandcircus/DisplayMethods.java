@@ -111,9 +111,6 @@ public class DisplayMethods {
 		int counter = 1; // Counter for items to be displayed
 		for (Media m : library) {
 			// Loops through looking for match
-
-			// Heres an attempt to only print books that are not checked out
-
 			if (m.getTitle().toUpperCase().contains(title)) {
 				System.out.println(counter++ + ". " + m);
 				// Adds item to tempList
@@ -206,13 +203,13 @@ public class DisplayMethods {
 		// switch case for which submenu
 		switch (userChoice) {
 		case 1:
-			// author director
+			// If user selected author/director
 			System.out.println("Enter author/director name:");
 			String name = scnr.nextLine();
 			DisplayMethods.displayByAuthor(name, library, scnr);
 			break;
 		default:
-			// title
+			// If user selected title
 			System.out.println("Enter title:");
 			String title = scnr.nextLine();
 			DisplayMethods.displayByTitle(title, library, scnr);
@@ -254,44 +251,30 @@ public class DisplayMethods {
 	}
 
 	public static ArrayList<Media> sortByTitle(ArrayList<Media> library) {
-
+		// sorts dvds and books together by title
 		Comparator<Media> compareByTitle = (Media o1, Media o2) -> o1.getTitle().compareTo(o2.getTitle()); // creates a comparator to sort with
-
 		Collections.sort(library, compareByTitle); // sorts using the comparator
-
 		return  library; // returns an updated list
 	}
 
 	public static ArrayList<Media> sortByAuthor(ArrayList<Media> library) {
-
+		// Splits into DVD and Book lists, then sorts by appropriate call method (Director or Author)
 		ArrayList<Book> books = new ArrayList<>(); // creates lists to split the combined list into
 		ArrayList<DVD> dvds = new ArrayList<>();
-
 		for (Media media : library) {
-
 			if (media instanceof Book) { // splits the books into first list
-
 				books.add((Book) media);
-
 			} else if (media instanceof DVD) { // splits the dvds into the second list
-
 				dvds.add((DVD) media);
 			}
-
 		}
 
 		Comparator<Book> compAuthors = (Book o1, Book o2) -> o1.getAuthor().compareTo(o2.getAuthor()); // creates a comparator for books
-
 		Collections.sort(books, compAuthors); // sorts books by comparator
-
 		Comparator<DVD> compDirector = (DVD o1, DVD o2) -> o1.getDirector().compareTo(o2.getDirector()); // creates a comparator for dvds
-
 		Collections.sort(dvds, compDirector); // sorts dvds by comparator
 
-
-//		DVDs.fileHelper.rewrite(dvds);
-//		Books.fileHelper.rewrite(books);
-
+		// Reconstruct into single library
 		library.clear();
 		library.addAll(books);
 		library.addAll(dvds);
