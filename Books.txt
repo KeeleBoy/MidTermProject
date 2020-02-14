@@ -1,20 +1,21 @@
-Brave New World	true	2/27/20	Aldous Huxley
-Darkness At Noon	false	3/1/20	Arthur Koestler
-Sons and Lovers	false	3/1/20	D.H. Lawrence
-The Great Gatsby	false	3/1/20	F. Scott Fitzgerald
-Crime and Punishment	false	3/1/20	Fyodor Dostoyevsky
-The Brothers Karamazov	false	3/1/20	Fyodor Dostoyevsky
-One Hundred Years of Solitude	false	3/1/20	Gabriel Garcia Marquez
-To kill a Mockingbird	false	3/1/20	Harper Lee
-Moby Dick	false	3/1/20	Herman Melville
-The Odyssey	false	3/1/20	Homer
-The Catcher in the Rye	false	3/1/20	J. D. Salinger
 A Portrait of the Artist as a Young Man	true	2/27/20	James Joyce
-Ulysses	false	3/1/20	James Joyce
+Brave New World	true	2/27/20	Aldous Huxley
 Catch-22	false	3/1/20	Joseph Heller
-War and Peace	false	3/1/20	Leo Tolstoy
-In Search of Lost Time	false	3/1/20	Marcel Proust
+Crime and Punishment	false	3/1/20	Fyodor Dostoyevsky
+Darkness At Noon	true	2/27/20	Arthur Koestler
 Don Quixote	false	3/1/20	Miguel de Cervantes
-Lolita	true	2/27/20	Vladimir Nabokov
-The Sound and the Fury	false	3/1/20	William Faulkner
 Hamlet	false	3/1/20	William Shakespeare
+In Search of Lost Time	false	3/1/20	Marcel Proust
+Lolita	false	2/27/20	Vladimir Nabokov
+Moby Dick	false	3/1/20	Herman Melville
+One Hundred Years of Solitude	true	2/27/20	Gabriel Garcia Marquez
+Sons and Lovers	false	3/1/20	D.H. Lawrence
+The Brothers Karamazov	false	3/1/20	Fyodor Dostoyevsky
+The Catcher in the Rye	false	3/1/20	J. D. Salinger
+The Great Gatsby	false	3/1/20	F. Scott Fitzgerald
+The Name of the Wind	true	2/27/20	Patrick Rothfuss
+The Odyssey	false	3/1/20	Homer
+The Sound and the Fury	false	3/1/20	William Faulkner
+To kill a Mockingbird	false	3/1/20	Harper Lee
+Ulysses	false	3/1/20	James Joyce
+War and Peace	false	3/1/20	Leo Tolstoy

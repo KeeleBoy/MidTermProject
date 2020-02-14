@@ -47,10 +47,9 @@ public class AudioBook extends Media {
 	public String toString() {
 		String audioBookString = "\"" + title + "\" by " + getAuthor() + ", Runtime: " + runtime + "m";
 		if (checkedOut) {
-			return String.format("%-60s%35s", audioBookString, "Unavailable until " + getDueDate());
-
+			return String.format("%-80s%20s", audioBookString, "Unavailable until " + getDueDate());
 		} else {
-			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(),  "Available");
+			return String.format("%-80s%20s", audioBookString,  "Available");
 		}
 
 	}

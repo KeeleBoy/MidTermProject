@@ -48,10 +48,10 @@ public class DVD extends Media {
 	public String toString() { // toString method, has 2 options for whether DVD is checked out
 		String dvdString = "\"" + title + "\" by " + getDirector() + ", Runtime: " + runtime + "m";
 		if (checkedOut) {
-			return String.format("%-60s%35s", dvdString, "Unavailable until " + getDueDate());
+			return String.format("%-80s%20s", dvdString, "Unavailable until " + getDueDate());
 
 		} else {
-			return String.format("%-60s%35s", "\"" + title + "\" by " + getDirector(), "Available");
+			return String.format("%-80s%20s", "\"" + title + "\" by " + getDirector(), "Available");
 		}
 
 	}

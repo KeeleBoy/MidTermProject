@@ -24,10 +24,10 @@ public class Book extends Media {
 	public String toString() { // toString, 2 options for whether or not the book is checked out
 		String bookString = "\"" + title + "\" by " + getAuthor();
 		if (checkedOut) {
-			return String.format("%-60s%35s", bookString, "Unavailable until " + getDueDate());
+			return String.format("%-80s%20s", bookString, "Unavailable until " + getDueDate());
 
 		} else {
-			return String.format("%-60s%35s", "\"" + title + "\" by " + getAuthor(), "Available");
+			return String.format("%-80s%20s", "\"" + title + "\" by " + getAuthor(), "Available");
 		}
 
 	}
